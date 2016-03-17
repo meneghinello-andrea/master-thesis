@@ -1,0 +1,19 @@
+#
+#  LaTeX compilation output
+#
+*.aux
+*.bbl
+*-blx.bib
+*.blg
+*.glg
+*.glo
+*.gls
+*.ist
+*.lof
+*.log
+*.lot
+*.out
+*.pdf
+*-frn.tex
+*.toc
+*.xml
