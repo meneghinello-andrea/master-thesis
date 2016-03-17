@@ -1,0 +1,46 @@
+%---------------------------------------------------------------------------------------------------
+%		problem.tex
+%
+%	This file contains the sections that describe the problem addressed in the thesis
+%
+%	Author: Andrea Meneghinello
+% Version: 0.1
+%	Table of changes:
+%		11/03/2016 -> document definition
+%---------------------------------------------------------------------------------------------------
+\section{Problem definition}
+\label{sec:problemSpace-problem}
+Cloud computing is becoming more mature day by day and market has started investing on it. A recent
+study, commissioned by Microsoft \cite{microsftCloudNewJob}, shows that cloud computing produces much
+new innovation in \acs{it} every year:
+
+\begin{center}
+	\begin{quote}
+		``Innovation created by cloud computing produce \textdollar{}1.1 trillion a year in new
+		business revenues. It was also able to generate 14 million of jobs worldwide from 2011 to 2015.''
+	\end{quote}
+\end{center}
+
+\ac{paas} differs from \ac{iaas} because \ac{paas} does not allow users to control the underlying
+hardware. Despite all \ac{paas} advantages (described in Section \ref{sec:problemSpace-paas-paasCharacteristics})
+the following issues may be still present:
+
+\begin{itemize}
+	\item{it may lead to a possible vendor lock-in if the provider imposes the use of a particular
+		technology;}
+	\item{it may compromise cloud resource elasticity because users are not able to configure the
+		underlying hardware.}
+\end{itemize}
+
+In order for the \ac{paas} vendors to offer developers high quality services, they should use a 
+virtualization layer that exploits the underlying hardware as best it can. The assets on which the
+virtualization layer can make optimizations are those illustrated in Section
+\ref{sec:problemSpace-paas-virtualization-assets}, hence our purpose is to compare and then analyse
+classic virtualization techniques and the ones provided by the Docker framework in terms of computing,
+storage and networking.
+
+In addiction we want to find a way to obtain elasticity, without considering hardware level. Thus new
+architectural patterns must be found in order to exploit elasticity offered by the cloud paradigm.
+
+Finally we want to understand the portability value that Docker offers in order to overcome the vendor
+lock-in problem.

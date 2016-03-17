@@ -1,0 +1,69 @@
+%---------------------------------------------------------------------------------------------------
+%		thesis.tex
+%
+%	This is the master file of the LaTeX document and contains all the directives that compilers use
+% to build the document.
+%
+%	Author: Andrea Meneghinello
+% Version: 0.1
+%	Table of changes:
+%		15/03/2016 -> document definition
+%---------------------------------------------------------------------------------------------------
+\input{settings/preamble.tex}
+
+\begin{document}
+	
+	%
+	%	Frontispiece of the document
+	%
+	\includepdf[pages={1}]{frontispiece.pdf}
+	\clearpage{}
+	
+	%
+	%	Empty page after the frontispiece inclusion
+	%
+	\mbox{}
+	\thispagestyle{empty}
+	\newpage{}
+	
+	%
+	%	Thanks file inclusion
+	%
+	
+	%
+	%	Abstract of the document
+	%
+	\begin{abstract}
+		abstract...
+	\end{abstract}
+	
+	%
+	%	Indexes
+	%
+	\printTOC{\TRUE{}}
+	\printLOT{\TRUE{}}
+	\printLOF{\TRUE{}}
+	
+	%
+	% Chapters
+	%
+	\input{chapters/problem/main.tex}
+
+	
+	%
+	%	Glossary
+	%
+	\printGLS{\TRUE{}}
+	
+	%
+	%	Appendices
+	%
+	\begin{appendices}
+	\end{appendices}
+	
+	%
+	%	Bibliography
+	%
+	\addcontentsline{toc}{chapter}{Biblography}
+	\printbibliography[title=\textsc{Bibliography}]
+\end{document}

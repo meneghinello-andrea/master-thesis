@@ -1,0 +1,125 @@
+%---------------------------------------------------------------------------------------------------
+%    Preamble.tex
+%
+%	This file define the preamble for current document and in particular it contains all the include
+% directives to import the necessary packages and styles to correctly build the document. It also
+% defines user specified macros that help writers to write the document.
+%
+% Author: Andrea Meneghinello
+% Version: 0.1
+% Table of changes:
+%		15/03/2016 -> document definition
+%---------------------------------------------------------------------------------------------------
+\documentclass[paper=A4, fontsize=11pt, openright, parskip=full, twoside]{scrreprt}
+
+\usepackage{acronym}
+\usepackage{abstract}
+\usepackage{caption}
+\usepackage{etoolbox}
+\usepackage{graphicx}
+\usepackage{ifthen}
+\usepackage{lastpage}
+\usepackage{lipsum}
+\usepackage{longtable}
+\usepackage{multirow}
+\usepackage{nameref}
+\usepackage{pdfpages}
+\usepackage{sectsty}
+\usepackage{siunitx}
+\usepackage{subcaption}
+\usepackage[page, toc]{appendix}
+\usepackage[english]{babel}
+\usepackage[style=numeric, useprefix, hyperref, backend=bibtex]{biblatex}
+\usepackage[utf8]{inputenc}
+\usepackage[babel]{csquotes}
+\usepackage[T1]{fontenc}
+\usepackage[hidelinks]{hyperref}
+\usepackage[nonumberlist, toc]{glossaries}
+\usepackage[expansion=true, protrusion=true]{microtype}
+\usepackage[automark, headsepline, markuppercase]{scrpage2}
+
+%
+%	Command to retrieve the current section
+%
+\makeatletter{}
+\newcommand*{\current}{\@currentlabelname}
+
+\def\thischaptertitle{}\def\thischapternumber{}
+\newtoggle{noFigs}
+
+\apptocmd{\@chapter}%
+{\gdef\thischaptertitle{#1}\gdef\thischapternumber{\thechapter}%
+	\global\toggletrue{noFigs}}{}{}
+
+% the figure environment does the job: the first time it is used after a \chapter command, 
+% it writes the information of the chapter to the LoF
+\AtBeginDocument{%
+	\AtBeginEnvironment{figure}{%
+		\iftoggle{noFigs}{
+			\addtocontents{lof}{\protect\contentsline {chapter}%
+				{\protect\numberline {\thischapternumber} {\thischaptertitle}}{}{} }
+			\global\togglefalse{noFigs}
+		}{}
+	}%
+}
+
+\makeatother{}
+
+%
+%	Set title page style
+%
+\allsectionsfont{\centering{ \normalfont{\scshape{}}}}
+
+%
+%	Header and footer page style
+%
+\pagestyle{scrheadings}
+\clearscrheadfoot{}
+\lehead{MSc in Computer Science}
+\chead{}
+\rohead{\current}
+\cfoot{\thepage{} of \pageref{LastPage}}
+
+%
+% Glossary style
+%
+\setglossarystyle{altlist}
+\makeglossaries{}
+
+%
+% Constant definition
+%
+\newcommand{\FALSE}{false}
+\newcommand{\TRUE}{true}
+
+%
+% Macro definition
+%
+\newcommand{\glossaryPlr}[1]{\underline{\glspl{#1}}}
+\newcommand{\glossarySng}[1]{\underline{\gls{#1}}}
+\newcommand{\keyword}[1]{\textbf{#1}}
+\newcommand{\printLOF}[1]{\ifthenelse{\equal{#1}{\TRUE{}}}{\listoffigures{}}{}}
+\newcommand{\printLOT}[1]{\ifthenelse{\equal{#1}{\TRUE{}}}{\listoftables{}}{}}
+\newcommand{\printTOC}[1]{\ifthenelse{\equal{#1}{\TRUE{}}}{\tableofcontents{}}{}}
+\newcommand{\printGLS}[1]{\ifthenelse{\equal{#1}{\TRUE{}}}{\clearpage{}\printglossary[title=Glossary]{}}{}}
+
+%
+% Command re-definition
+%
+%\renewcommand{\thefigure}{\arabic{figure}}
+\renewcommand{\thetable}{\arabic{table}}
+\renewcommand{\appendixname}{Appendices}
+\renewcommand\appendixpagename{\usekomafont{disposition}Appendices}
+
+%
+%	Link to database file
+%
+\input{databases/acronym.tex}
+\input{databases/glossary.tex}
+\bibliography{databases/bibliography.bib}
+
+%
+%	Add subsub-section to the table of contents
+%
+\setcounter{tocdepth}{4}
+\setcounter{secnumdepth}{4}

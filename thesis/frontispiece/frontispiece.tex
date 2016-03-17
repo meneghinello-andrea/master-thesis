@@ -1,0 +1,37 @@
+%---------------------------------------------------------------------------------------------------
+%    frontispiece.tex
+%
+% This file contains the rules to generate the document frontispiece.
+%
+% Author: Andrea Meneghinello
+% Version: 0.1
+% Table of changes:
+%		05/03/2016 -> document definition
+%		07/03/2016 -> correct a grammar in the title
+%		09/03/2016 -> correct the thesis title according with the supervisor
+%		11/03/2016 -> removed section about correlator
+%---------------------------------------------------------------------------------------------------
+\documentclass[a4paper, titlepage]{book}
+
+\usepackage{frontespizio}
+
+\begin{document}
+	\begin{frontespizio}
+		
+		\Istituzione{University of Padua}
+		\Logo[2cm]{frontispiece/images/unipd-logo.png}
+		\Divisione{Departments of Mathematics}
+		\Scuola{Msc Degree in Computer Science}
+		
+		\Titolo{Modeling Elastic and Multi-Tenant Applications\\Deployable in the Cloud}
+		\Sottotitolo{\textsc{a performance comparison of containerization\\and virtualization technologies}}
+		
+		\NCandidato{Candidate}
+		\Candidato{Andrea Meneghinello}
+		
+		\NRelatore{Thesis supervisor}{Thesis supervisors}
+		\Relatore{Tullio Vardanega}
+		
+		\Piede{Academic Year 2015 -- 2016}
+	\end{frontespizio}
+\end{document}
