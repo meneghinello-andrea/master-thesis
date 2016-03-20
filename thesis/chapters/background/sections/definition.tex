@@ -9,7 +9,7 @@
 %		11/03/2016 -> document definition
 %---------------------------------------------------------------------------------------------------
 \section{Problem definition}
-\label{sec:problemSpace-problem}
+\label{sec:background-problem}
 Cloud computing is becoming more mature day by day and market has started investing on it. A recent
 study, commissioned by Microsoft \cite{microsftCloudNewJob}, shows that cloud computing produces much
 new innovation in \acs{it} every year:
@@ -21,8 +21,12 @@ new innovation in \acs{it} every year:
 	\end{quote}
 \end{center}
 
-\ac{paas} differs from \ac{iaas} because \ac{paas} does not allow users to control the underlying
-hardware. Despite all \ac{paas} advantages (described in Section \ref{sec:problemSpace-paas-paasCharacteristics})
+Therefore the trend is positive and it is expected to grow more and more in the long term.
+
+We have argued about the major requests made by software developers. Their need for automatic
+hardware configuration lead to the creation of the \ac{paas} cloud model. \ac{paas} differs from
+\ac{iaas} because \ac{paas} does not allow users to control the underlying hardware. Despite all
+\ac{paas} advantages (described in Section \ref{sec:background-paas-characteristics})
 the following issues may be still present:
 
 \begin{itemize}
@@ -32,15 +36,18 @@ the following issues may be still present:
 		underlying hardware.}
 \end{itemize}
 
-In order for the \ac{paas} vendors to offer developers high quality services, they should use a 
-virtualization layer that exploits the underlying hardware as best it can. The assets on which the
-virtualization layer can make optimizations are those illustrated in Section
-\ref{sec:problemSpace-virtualization-assets}, hence our purpose is to compare and then analyse
+In order for the \ac{paas} vendors to offer high quality services, both for companies and software-houses,
+they must provide ready-to-use work environments and key mechanisms that guarantee \keyword{elasticity}
+for the deployment units.
+
+Elasticity can be obtained by the combination of two complementary dimensions: \keyword{optimization of 
+the \ac{paas} underlying hardware management} and \keyword{specifically designed software
+architectures}.
+
+The assets on which the \ac{paas} vendors can make optimizations are those illustrated in Section
+\ref{sec:background-virtualization-assets}, hence our purpose is to compare and then analyse
 classic virtualization techniques and the ones provided by the Docker framework in terms of computing,
 storage and networking.
 
-In addiction we want to find a way to obtain elasticity, without considering hardware level. Thus new
-architectural patterns must be found in order to exploit elasticity offered by the cloud paradigm.
-
-Finally we want to understand the portability value that Docker offers in order to overcome the vendor
-lock-in problem.
+In addiction we will seek for an architectural pattern that is able to exploit the elasticity mechanisms 
+provided by the \ac{paas} layer.

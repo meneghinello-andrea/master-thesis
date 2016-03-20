@@ -12,14 +12,15 @@ PUBLISH_NAME            = Meneghinello.pdf
 
 REPORT_FILE_NAME        = thesis
 
-REPORT_CHAPTERS         = chapters/problem/main.tex \
-						  chapters/problem/sections/use-cases.tex \
-						  chapters/problem/sections/cloud.tex \
-						  chapters/problem/sections/paas.tex \
-						  chapters/problem/sections/docker.tex \
-						  chapters/problem/sections/platform.tex \
-						  chapters/problem/sections/problem.tex \
-						  chapters/problem/sections/summary.tex
+REPORT_CHAPTERS         = chapters/background/main.tex \
+						  chapters/background/sections/use-cases.tex \
+						  chapters/background/sections/cloud.tex \
+						  chapters/background/sections/paas.tex \
+						  chapters/background/sections/virtualization.tex \
+						  chapters/background/sections/docker.tex \
+						  chapters/background/sections/platform.tex \
+						  chapters/background/sections/definition.tex \
+						  chapters/background/sections/summary.tex
 
 .PHONY: clean compile publish
 

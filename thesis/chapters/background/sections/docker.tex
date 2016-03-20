@@ -10,7 +10,7 @@
 %		12/03/2016 -> document definition
 %---------------------------------------------------------------------------------------------------
 \section{Docker containers}
-\label{sec:problemSpace-docker}
+\label{sec:background-docker}
 Docker started its life as an open-source project at “dotCloud”, a cloud-centric PaaS company, in early
 2013.
 
@@ -45,7 +45,7 @@ data and resolve the dependency-hell problem. Finally we will do brief a digress
 in security.
 
 \subsection{Docker architecture}
-\label{sec:problemSpace-docker-architecture}
+\label{sec:background-docker-architecture}
 Docker is based on a client-server architecture: the \keyword{client} and \keyword{daemon}. Docker
 client ``talks'' with the daemon, which does the hardest work of building, running and distributing
 the containers. Users cannot directly interact with the daemon: they must write commands for it 
@@ -54,17 +54,17 @@ through the client.
 Both the Docker client and the daemon can run on the same system, or it is possible to connect the
 first one to a remote daemon. They can communicate via sockets or through a RESTful \acs{api}.
 
-The Docker ecosystem, shown in Figure \ref{img:problemSpace-docker-architecture-architecture}, is
+The Docker ecosystem, shown in Figure \ref{img:background-docker-architecture-architecture}, is
 composed by the following components: \keyword{images}, \keyword{registries} and finally
 \keyword{containers}.
 
 \begin{figure}
 	\centering{}
-	\includegraphics[width=0.8\textwidth]{chapters/problem/images/docker-architecture.png}
+	\includegraphics[width=0.8\textwidth]{chapters/background/images/docker-architecture.png}
 	\caption[Docker architecture overview]{Docker architecture overview. We can see that a command
 		received by the Docker client is forwarded to the Docker daemon which manages the container
 		life-cycle. To the right there is the registry that holds the published images.}
-	\label{img:problemSpace-docker-architecture-architecture}
+	\label{img:background-docker-architecture-architecture}
 \end{figure}
 
 A Docker image is a read-only template that Docker uses to create the runnable container; it provides
@@ -88,19 +88,19 @@ daemon, which reads the corresponding image and uses it to “give life” to th
 can be run, started, stopped, moved, and deleted easily. They are the run component of the Docker ecosystem.
 
 With Docker containers we can achieve isolation and resource control (important features of SaaS)
-through the use of namespaces and cgroups (see Section \ref{sec:problemSpace-virtualization-types})
+through the use of namespaces and cgroups (see Section \ref{sec:background-virtualization-types})
 
 To manage isolation and resource control, Docker largely uses Linux-kernel features, but different kernels
 can have contrasting interfaces for the same functionalities. This is the reason why Docker, since v0.9,
 replaced the old \ac{lxc} execution environment (which contains cgroups and namespaces) with
-\keyword{LibContainer} (shown in Figure \ref{img:problemSpace-docker-architecture-libcontainer}).
+\keyword{LibContainer} (shown in Figure \ref{img:background-docker-architecture-libcontainer}).
 
 \begin{figure}
 	\centering{}
-	\includegraphics[width=0.6\textwidth]{chapters/problem/images/libcontainer.png}
+	\includegraphics[width=0.6\textwidth]{chapters/background/images/libcontainer.png}
 	\caption[Docker libcontainer overview]{Now Docker execution environment is separated from the underlying
 		\acs{os} though the introduction of LibContainers.}
-	\label{img:problemSpace-docker-architecture-libcontainer}
+	\label{img:background-docker-architecture-libcontainer}
 \end{figure}
 
 LibContainer is now the default Docker execution environment. It is meant to be a cross-system abstraction
@@ -123,7 +123,7 @@ which means less risks for the safety factor, because the connection is only ava
 containers behind the same firewall\footnote{We will analyse in Chapter REF the benefit of this feature.}.
 
 \subsection{Data management}
-\label{sec:problemSpace-docker-dataManagement}
+\label{sec:background-docker-dataManagement}
 Docker images are read-only templates from which Docker containers are lunched. Each image consists of
 a series of layers combined into a single image using the \acf{ufs} technology.
 
@@ -139,11 +139,11 @@ referred to as namespaces unification.
 
 \begin{figure}
 	\centering{}
-	\includegraphics[width=0.4\textwidth]{chapters/problem/images/unionfs.png}
+	\includegraphics[width=0.4\textwidth]{chapters/background/images/unionfs.png}
 	\caption[Docker \ac{ufs} overview]{Example of file renaming using the \acf{ufs}. The user's process
 		see only one logical file and it is responsibility of \acf{vfs} to correctly map the rename command
 		to different underlying \acf{fs}.}
-	\label{img:problemSpace-docker-architecture-unionfs}
+	\label{img:background-docker-architecture-unionfs}
 \end{figure}
 
 \ac{ufs} uses a simple priority model which gives a unique priority to each branch . If a file exists
@@ -180,7 +180,7 @@ These two features are useful when we plan to provide a backup, restore or migra
 applications.
 
 \subsection{Dependency hell problem}
-\label{sec:problemSpace-docker-dependencyHell}
+\label{sec:background-docker-dependencyHell}
 \citeauthor{michaeljang2006} in \cite{michaeljang2006} defines the colloquial term “dependency hell” 
 to point out a set of problems. It refers to the frustration problem that software developers deal with
 when installing applications with dependencies on specific versions of other software packages. Modern
@@ -207,7 +207,7 @@ into a container. In particular, with Docker the following issues cannot be rise
 \end{itemize}
 
 \subsection{Security issues}
-\label{sec:problemSpace-docker-security}
+\label{sec:background-docker-security}
 Docker is becoming an interesting technology in cloud computing world and for this reason we need also
 to analyse its intrinsic security issues. Speaking about Docker security, we need to focus on the following
 areas: intrinsic security of Linux kernel and its support for namespaces and cgroups features, the weaknesses

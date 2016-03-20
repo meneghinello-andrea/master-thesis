@@ -9,8 +9,9 @@
 %		15/03/2016 -> document definition
 %---------------------------------------------------------------------------------------------------
 \section{\acf{paas}}
-\label{sec:problemSpace-paas}
-\keyword{\ac{paas}} is like a \glossarySng{middleware}. It is a set of services that helps developers
+\label{sec:background-paas}
+In the remaining of the thesis our focus will be on the \keyword{\ac{paas}} service model.
+\ac{paas} is like a \glossarySng{middleware}. It is a set of services that helps developers
 to develop and test software without having to worry about provisioning servers, storage and backup
 associated with developing and launching a new service. Developers want to write code, test the service,
 launch it and be able to continually make changes to it to fix bugs. All the back-end issues about setting
@@ -24,26 +25,30 @@ administrated on servers by qualified personnel. All those tasks are usually ass
 Instead \ac{paas} is a superset of middleware and offers all these good features to developers
 in addition to covering the operational aspects that where typically owned by \acs{it} teams.
 
-Figure \ref{img:problemSpace-paas-spiResponsibilities} illustrates, in a transparent way, what are the
+Figure \ref{img:background-paas-spiResponsibilities} illustrates, in a transparent way, what are the
 developers responsibility in the different stacks which compose the \ac{spi} model. We can see that
 if we adopt the \ac{paas} model, we are only responsible for our code and its data.
 
 \begin{figure}
 	\centering{}
-	\includegraphics[width=0.8\textwidth]{chapters/problem/images/separation-responsabilities.png}
+	\includegraphics[width=0.8\textwidth]{chapters/background/images/separation-responsabilities.png}
 	\caption[Separation of responsability in \acs{spi}]{Separation of responsability in different stacks
 		of the \acf{spi} model compared with the on premises one \cite{spiRepsonabilities}.}
-	\label{img:problemSpace-paas-spiResponsibilities}
+	\label{img:background-paas-spiResponsibilities}
 \end{figure}
 
-As we argued in Section \ref{sec:problemSpace-cloudComputing-cloudDepoymentModels}, \ac{paas} is possible
+As we argued in Section \ref{sec:background-cloudComputing-cloudDepoymentModels}, \ac{paas} is possible
 because is ``sitting'' over the \ac{iaas} infrastructure and through virtualization is able to provide many
 features to developers. In following sections we will deep the concept of \ac{paas}
-analysing its main characteristics and and the scenarios in which it is mostly useful. We will also
-do a brief digression about virtualization, its main characteristics and available types.
+analysing its main characteristics and and the scenarios in which it is mostly useful and where it may not
+be the best option. 
 
-\subsection{\acs{paas}: main characteristics}
-\label{sec:problemSpace-paas-paasCharacteristics}
+Later, in Section \ref{sec:background-virtualization} and \ref{sec:background-docker}, we will respectively
+describe virtualization technique and containerization with Docker because they are used to ``build''
+the software deployment units managed by the \ac{paas} level.
+
+\subsection{Main characteristics}
+\label{sec:background-paas-characteristics}
 \ac{paas} offers to developers the following basic characteristics:
 
 \begin{itemize}
@@ -82,8 +87,8 @@ services and comes in two various types:
 is able to provide though virtualization. In the next section we will deep the concept of virtualization
 to get to present the \acs{os} level of virtualization that cover a relevant part of this thesis.
 
-\subsection{\acs{paas}: where it makes sense}
-\label{sec:problemSpace-paas-whereToUse}
+\subsection{Where it makes sense}
+\label{sec:background-paas-whereToUse}
 \ac{paas} is very useful in any situation where multiple developers work on a development project or
 where other external parties need to interact with the development process. As the case study illustrated
 below, it is proving invaluable for those who have an existing data source, for example sales information
@@ -96,8 +101,8 @@ difficulties around rapid development and iteration of software.
 Some examples of \ac{paas} include \ac{gae} \cite{googleAppEngine}, Microsoft Windows Azure
 \cite{windowsAzure} and finally Salesforce.com \cite{salesforcePlatform}.
 
-\subsection{\acs{paas}: where it may not be the best option}
-\label{sec:problemSpace-paas-whereNotToUse}
+\subsection{Where it may not be the best option}
+\label{sec:background-paas-whereNotToUse}
 There are many positive aspects that bring us adopting \ac{paas}, but there also some scenarios where it
 may not be ideal. Examples include:
 
@@ -109,8 +114,8 @@ may not be ideal. Examples include:
 	\item{where application performance requires customization of the underlying hardware and/or software.}
 \end{itemize}
 
-\subsection{\acs{paas}: a case study}
-\label{sec:problemSpace-paas-caseStudy}
+\subsection{A case study}
+\label{sec:background-paas-caseStudy}
 Menumate \cite{menumateCaseStudy} is a provider of point of sale hardware and software for the hospitality
 industry across Australasia. It has taken advantage of the Force.com \ac{paas} to migrate over time a
 series of legacy applications used in the business.

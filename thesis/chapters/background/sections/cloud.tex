@@ -9,24 +9,24 @@
 %		15/03/2016 -> document definition
 %---------------------------------------------------------------------------------------------------
 \section{Cloud Computing}
-\label{sec:problemSpace-cloudComputing}
+\label{sec:background-cloudComputing}
 Cloud computing provides shared resources and data to devices on-demand; providers commonly offer a 
 ``\keyword{\glossarySng{pay-per-use}}'' model to pay used resources. Hence the pay-per-use model
 in \acs{it} is becoming available to the market. It has been proved that it is an effective way to
 reduce \acs{it} costs without sacrificing software quality. Consequently the demand for highly
 responsive, reactive and cheap \ac{saas}, made by end-users and companies, is increasing (as shown
-in Figure \ref{img:problemSpace-cloudComputing-saasInterest}).
+in Figure \ref{img:background-cloudComputing-saasInterest}).
 
 %TODO -> controllare se inserire una reference in "It has been proved"
  
 \begin{figure}
 	\centering{}
- 	\includegraphics[width=0.75\textwidth]{chapters/problem/images/saas-interest.png}
+ 	\includegraphics[width=0.75\textwidth]{chapters/background/images/saas-interest.png}
  	\caption[Trends in searching ``\acs{saas}'' on Google]{\acf{saas} and its acronym (\acs{saas})
  		terms search since 2004 in Google's investigation made all over the world. In red we can see
  		results about ``\acs{saas}'' term search instead in blue we have the ``\acf{saas}'' one. 
  		(\footnotesize{source	Google Trends}\normalsize{)}}
- 	\label{img:problemSpace-cloudComputing-saasInterest}
+ 	\label{img:background-cloudComputing-saasInterest}
 \end{figure}
 
 Cloud computing helps also software-houses, providing them \keyword{ready-to-use work environments}.
@@ -34,14 +34,14 @@ This solution makes software-houses save both money and time because developers 
 building the work environments on their own. In addiction those work environments are \keyword{elastic},
 hence they can build and deploy their application and make them ubiquitous. Therefore the demand for
 this particular kind of cloud platform is increasing, as shown in Figure
-\ref{img:problemSpace-cloudComputing-paasInterest}.
+\ref{img:background-cloudComputing-paasInterest}.
 
 \begin{figure}
 	\centering{}
-	\includegraphics[width=0.75\textwidth]{chapters/problem/images/paas-interest.png}
+	\includegraphics[width=0.75\textwidth]{chapters/background/images/paas-interest.png}
 	\caption[Trends in searching ``\acs{paas}'' on Google]{\acf{paas} terms search since 2004 in Google's
 		investigation made all over the world. (\footnotesize{source	Google Trends}\normalsize{)}}
-	\label{img:problemSpace-cloudComputing-paasInterest}
+	\label{img:background-cloudComputing-paasInterest}
 \end{figure}
 
 To make their software exploit the elasticity offered by cloud environments, software-houses need to redesign
@@ -63,7 +63,7 @@ In following Sections we will show, in details, the benefits of its adoption by 
 characteristics.
 
 \subsection*{Moving from platform ownership to platform management}
-\label{sec:problemSpace-cloudComputing-capexOpex}
+\label{sec:background-cloudComputing-capexOpex}
 When companies decide to design, and consequently build, a new software service they have to plan how
 many resources (compute capacity, storage and networking) making available in order to respect the defined
 \ac{sla}. Developers have to build, over the provisioned resources, the working environment to build
@@ -80,17 +80,17 @@ Opposite to the \ac{capex} business model there is the \keyword{\ac{opex}}. This
 because it does not require to invest in capital ownership (hardware and time to build the work
 environment) but instead in renting both the desired amount of resources and the ready-to-use work
 environments and simply release them when they are no more necessary. This model, if correctly applied,
-permits a cost reduction; Figure \ref{img:problemSpace-capexOpex-model} shows a chart which compares
+permits a cost reduction; Figure \ref{img:background-capexOpex-model} shows a chart which compares
 both models. We can also see that there will be a moment (in the adoption of \ac{capex} one) on which
 there is a lack in the available resources leading to a decline of the service and to a possible \ac{sla}
 violation.
 
 \begin{figure}
 	\centering{}
-	\includegraphics[width=0.9\textwidth]{chapters/problem/images/capex-opex.png}
+	\includegraphics[width=0.9\textwidth]{chapters/background/images/capex-opex.png}
 	\caption[Comparison between \acs{capex} and \acs{opex} business models]{Comparison of \acf{capex}
 		and \acf{opex} business models.}
-	\label{img:problemSpace-capexOpex-model}
+	\label{img:background-capexOpex-model}
 \end{figure}
 
 We can observe these two different business models also in two real case scenarios \cite{netflixZynga}
@@ -102,7 +102,7 @@ short period, very popular between Facebook users (it reached 10 million of acti
 6 weeks). Initially the service was hosted inside the Amazon infrastructure but two years later his
 \acs{ceo}, Frank D. Gibeau, decided to invest \textdollar{}100 million to build a proprietary data-centre
 to host the service assuming to obtain a long term cost reduction. In Figure
-\ref{img:problemSpace-capexOpex-zyngaCase} we can see the trend of \ac{mau} of Farmville application
+\ref{img:background-capexOpex-zyngaCase} we can see the trend of \ac{mau} of Farmville application
 in the months that follow the opening of new data-centre. It is possible to observe that \ac{mau} reached
 its peak in 2012 (when the new centre became operative) but in the following two years this value had
 been divided by three (as the new infrastructure demanded), leading to consistent economic losses.
@@ -110,11 +110,11 @@ Thus the society has decided to return basing its service on the Amazon Infrastr
 
 \begin{figure}
 	\centering{}
-	\includegraphics[width=0.6\textwidth]{chapters/problem/images/zynga-case.png}
+	\includegraphics[width=0.6\textwidth]{chapters/background/images/zynga-case.png}
 	\caption[\acs{mau} of Farmville application after 2012]{\acf{mau} of the Farmville application from
 		2012 when company decide to invest in a proprietary data-centre. We can observe that after two
 		years the users' demand is divided by three as the infrastructure demand \cite{netflixZynga}.}
-	\label{img:problemSpace-capexOpex-zyngaCase}
+	\label{img:background-capexOpex-zyngaCase}
 \end{figure}
 
 Netflix, born in 1997 with a rent \acs{dvd} service, started a new \ac{vod} business in 2007 and, as
@@ -123,9 +123,9 @@ difference is that Netflix never chose to change its infrastructure supplier whe
 business was starting to succeed. This choice allowed Netflix to become the major \ac{vod} competitor.
 
 \subsection*{Cloud Computing key characteristics}
-\label{sec:problemSpace-cloudComputing-characteristics}
+\label{sec:background-cloudComputing-characteristics}
 Taking as a reference the \ac{nist} definition of cloud computing \cite{nistCloudComputing}, a pool of resources
-must offer the following characteristics (shown in Figure \ref{img:problemSpace-cloudComputing-characteristics})
+must offer the following characteristics (shown in Figure \ref{img:background-cloudComputing-characteristics})
 to the end-users to be considered a cloud environment:
 
 \begin{itemize}
@@ -148,16 +148,16 @@ to the end-users to be considered a cloud environment:
 
 \begin{figure}
 	\centering{}
-	\includegraphics[width=0.5\textwidth]{chapters/problem/images/cloud-characteristics.png}
+	\includegraphics[width=0.5\textwidth]{chapters/background/images/cloud-characteristics.png}
 	\caption[Key characteristics of cloud computing]{An overview of the five characteristics that makes a
 		pool of shared resources a cloud computing environment \cite{cloudCharacteristics}.}
-	\label{img:problemSpace-cloudComputing-characteristics}
+	\label{img:background-cloudComputing-characteristics}
 \end{figure}
 
 \subsection*{Available service models}
-\label{sec:problemSpace-cloudComputing-cloudServiceModels}
+\label{sec:background-cloudComputing-cloudServiceModels}
 Nowadays cloud computing makes available many service models (shown in Figure
-\ref{img:problemSpace-cloudComputing-serviceModels}):
+\ref{img:background-cloudComputing-serviceModels}):
 
 \begin{itemize}
 	\item{\keyword{\acf{saas}}: the capability provided to the end-user is to use the provider's
@@ -195,15 +195,15 @@ create this transportation analogy:
 
 \begin{figure}
 	\centering{}
-	\includegraphics[width=0.55\textwidth]{chapters/problem/images/cloud-service-models.png}
+	\includegraphics[width=0.55\textwidth]{chapters/background/images/cloud-service-models.png}
 	\caption[Available service models in cloud computing]{An overview of available cloud service models. On the
 		left we can observe example of ``environments'' that uses the specified models, while on the right we
 		have the people interested for that specific models \cite{cloudServiceModels}.}
-	\label{img:problemSpace-cloudComputing-serviceModels}
+	\label{img:background-cloudComputing-serviceModels}
 \end{figure}
 
 \subsection*{Available deployment models}
-\label{sec:problemSpace-cloudComputing-cloudDepoymentModels}
+\label{sec:background-cloudComputing-cloudDepoymentModels}
 Cloud Computing can assume different forms:
 
 \begin{itemize}
@@ -225,7 +225,7 @@ Cloud Computing can assume different forms:
 \end{itemize}
 
 \subsection*{Isolation and resource control}
-\label{sec:problemSpace-cloudComputing-isolationResource}
+\label{sec:background-cloudComputing-isolationResource}
 With the adoption of cloud computing, software-houses have isolation between hardware management and the software
 development that makes possible to separate the work of hardware engineers and software developers.
 Now it is possible to maintain the hardware updated without worrying about the software. For example Amazon

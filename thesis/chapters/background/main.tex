@@ -1,0 +1,48 @@
+%---------------------------------------------------------------------------------------------------
+%		main.tex
+%
+%	This is the main file of the chapter that talk about the problem space.
+%
+%	Author: Andrea Meneghinello
+% Version: 0.1
+%	Table of changes:
+%		15/03/2016 -> document definition
+%---------------------------------------------------------------------------------------------------
+\chapter{Background}
+\label{cap:background}
+With this chapter we want to introduce our thesis talking about main problems that developers
+encounter during their work. Our focus will be on cloud computing, with special
+attention to \ac{paas} level of \ac{spi} cloud model, as a valid solution both for
+companies\footnote{With the term companies we refer to which one that use applications, hence
+excluding software-houses that produce applications.} and for developers.
+
+We will start describing, in Section \ref{sec:background-useCases}, some use-cases that illustrate
+common scenarios that lead us to consider cloud computing model, in Section 
+\ref{sec:background-cloudComputing} as solution for both companies and software-houses.
+Later we will focus our attention on the \ac{paas} cloud model, Section \ref{sec:background-paas}, 
+illustrating its main features and characteristics; we also discuss how this cloud model is possible
+through virtualization, Section \ref{sec:background-virtualization}.
+
+Progressively we will illustrate Docker, Section \ref{sec:background-docker}, a new \acs{os}
+virtualization level technology that promise to change the \ac{paas} cloud model; we illustrate its
+main characteristics, its architecture, how it provide data-management to conclude with a brief digression
+about the state-of-the-art of security issues.
+
+Finally Section \ref{sec:background-problem} will give a formal description of the problem that we
+will face in the rest of the thesis.
+
+\input{chapters/background/sections/use-cases.tex}
+
+\input{chapters/background/sections/cloud.tex}
+
+\input{chapters/background/sections/paas.tex}
+
+\input{chapters/background/sections/virtualization.tex}
+
+\input{chapters/background/sections/docker.tex}
+
+\input{chapters/background/sections/platform.tex}
+
+\input{chapters/background/sections/definition.tex}
+
+%\input{chapters/background/sections/summary.tex}
