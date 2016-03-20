@@ -20,7 +20,8 @@ REPORT_CHAPTERS         = chapters/background/main.tex \
 						  chapters/background/sections/docker.tex \
 						  chapters/background/sections/platform.tex \
 						  chapters/background/sections/definition.tex \
-						  chapters/background/sections/summary.tex
+						  chapters/elasticity/main.tex \
+						  chapters/elasticity/sections/elasticity.tex 
 
 .PHONY: clean compile publish
 
