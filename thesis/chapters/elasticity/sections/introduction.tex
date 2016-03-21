@@ -1,0 +1,55 @@
+%---------------------------------------------------------------------------------------------------
+%		introduction.tex
+%
+%	This is the main file of the chapter that talk about elasticity.
+%
+%	Author: Andrea Meneghinello
+% Version: 0.1
+%	Table of changes:
+%		17/03/2016 -> document definition
+%---------------------------------------------------------------------------------------------------
+\section{Introduction}
+\label{sec:elasticity-introduction}
+A requirement for distributed services is availability: they must remain regularly available to be
+used by as many customers as needed with \keyword{acceptable performance} and \keyword{scalability}.
+Distributed services and systems have always been required to be scalable. Replication of services
+components, in order to balance the workload arriving to each replica, has been the chosen approach.
+
+Services needed to be carefully designed in order to minimize synchronization needs among their
+components with the aim of not blocking their execution. Evidently, unlimited scalability could not be
+achieved since it requires infinite infrastructure resources. So, traditionally, scalability of a
+service depends on its software architecture being limited by the amount of hardware resources secured
+in the data-centre where it was deployed.
+
+As we have seen in the previous chapter, the advent of cloud computing partially broke those limits, but
+elasticity management remains not trivial.
+
+According to the \ac{nist} definition (given in Section
+\ref{sec:background-cloudComputing-cloudServiceModels}), \ac{paas} gives freedom to the customer regarding
+application reconfiguration, since end-users should only deal with the general ``configuration settings
+for the application-hosting environment'' but do not need to worry about the mechanism being needed
+for implementing those reconfigurations. Reconfiguration management is the responsibility of \ac{paas}
+providers. Since every cloud service should be elastic (accordingly with cloud definition), this mean
+that \ac{paas} providers should deal with many mechanism that automate the service scalability and
+adaptability.
+
+However, the level of automation needed to approach a cost-optimal exploitation of the service is still
+changing nowadays because of the many aspects that should be considered. On one hand, scalability
+decisions must match what has been stated in the \ac{sla}. This means that those decisions should be
+taken as soon as the workload or the service performance starts to vary, which strongly suggests the
+need to include some workload prediction mechanism. Nevertheless, forecasting techniques are not perfect
+hence, they should be complemented with other reactive mechanism; e.g. when the resulting service
+performance level do not comply with what is being specified in the \ac{sla} or lead unnecessary
+over-provisioning costs, service providers should take appropriate actions. Those actions may consist
+in adding service instances or migrating those instances to better \ac{vm}s when service capacity
+should be increased, or in the opposite case, in releasing instances when service capacity need to be
+decreased.
+
+One of the regular dimensions in \ac{sla}s is availability. Successful distributed services are
+concurrently used by many customers. Service providers should guarantee service continuity, otherwise
+service clients will not rely on that provider and they will look for another, more reliable, one.
+Unfortunately, since complex software systems are always in need of modification, both platform and
+service components need to be eventually updated in order to fix bugs, remove security vulnerabilities
+or enhance their functionality. This software upgrading process might endanger the availability levels
+specified in a \ac{sla}. So, this is another source of trouble for service providers.
+

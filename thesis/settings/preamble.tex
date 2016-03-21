@@ -44,27 +44,27 @@
 \makeatletter{}
 \newcommand*{\current}{\@currentlabelname}
 
-% initial definitions of the chapter info (name and number)
-\def\thischaptertitle{}\def\thischapternumber{}
-\newtoggle{noFigs}
+\def\thischaptertitle{}
+\apptocmd{\@chapter}{\gdef\thischaptertitle{#1}}{}{}
 
-\apptocmd{\@chapter}%
-{\gdef\thischaptertitle{#1}\gdef\thischapternumber{\thechapter}%
-	\global\toggletrue{noFigs}}{}{}
+\newcommand{\DeclareDividedList}[1]%
+{\newcounter{#1@chapter}\setcounter{#1@chapter}{0}}
 
-% the figure environment does the job: the first time it is used after a \chapter command, 
-% it writes the information of the chapter to the LoF
-\AtBeginDocument{%
-	\AtBeginEnvironment{figure}{%
-		\iftoggle{noFigs}{
-			\addtocontents{lof}{\protect\contentsline {chapter}%
-				{\protect\numberline {\thischapternumber} {\thischaptertitle}}{}{} }
-			\global\togglefalse{noFigs}
-		}{}
-	}%
-}
+\pretocmd{\addcontentsline}%
+{\ifltxcounter{#1@chapter}%
+	{%
+		\ifnumgreater{\thechapter}{\value{#1@chapter}}{%
+			\setcounter{#1@chapter}{\thechapter}%
+			\addtocontents{#1}{\protect\contentsline{chapter}%
+				{\protect\numberline {\thechapter} {\thischaptertitle}}{}{} }
+		}{}%
+	}{}%
+}{}{}
 
 \makeatother{}
+
+\DeclareDividedList{lof}
+\DeclareDividedList{lot}
 
 %
 %	Set title page style

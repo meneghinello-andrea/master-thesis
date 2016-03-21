@@ -1,5 +1,5 @@
 %---------------------------------------------------------------------------------------------------
-%		elasticity.tex
+%		requirements.tex
 %
 %	This is the main file of the chapter that talk about elasticity.
 %
@@ -8,52 +8,7 @@
 %	Table of changes:
 %		17/03/2016 -> document definition
 %---------------------------------------------------------------------------------------------------
-\section{Introduction}
-\label{sec:elasticity-introduction}
-A requirement for distributed services is availability: they must remain regularly available to be
-used by as many customers as needed with \keyword{acceptable performance} and \keyword{scalability}.
-Distributed services and systems have always been required to be scalable. Replication of services
-components, in order to balance the workload arriving to each replica, has been the chosen approach.
-
-Services needed to be carefully designed in order to minimize synchronization needs among their
-components with the aim of not blocking their execution. Evidently, unlimited scalability could not be
-achieved since it requires infinite infrastructure resources. So, traditionally, scalability of a
-service depends on its software architecture being limited by the amount of hardware resources secured
-in the data-centre where it was deployed.
-
-As we have seen in the previous chapter, the advent of cloud computing partially broke those limits, but
-elasticity management remains not trivial.
-
-According to the \ac{nist} definition (given in Section
-\ref{sec:background-cloudComputing-cloudServiceModels}), \ac{paas} gives freedom to the customer regarding
-application reconfiguration, since end-users should only deal with the general ``configuration settings
-for the application-hosting environment'' but do not need to worry about the mechanism being needed
-for implementing those reconfigurations. Reconfiguration management is the responsibility of \ac{paas}
-providers. Since every cloud service should be elastic (accordingly with cloud definition), this mean
-that \ac{paas} providers should deal with many mechanism that automate the service scalability and
-adaptability.
-
-However, the level of automation needed to approach a cost-optimal exploitation of the service is still
-changing nowadays because of the many aspects that should be considered. On one hand, scalability
-decisions must match what has been stated in the \ac{sla}. This means that those decisions should be
-taken as soon as the workload or the service performance starts to vary, which strongly suggests the
-need to include some workload prediction mechanism. Nevertheless, forecasting techniques are not perfect
-hence, they should be complemented with other reactive mechanism; e.g. when the resulting service
-performance level do not comply with what is being specified in the \ac{sla} or lead unnecessary
-over-provisioning costs, service providers should take appropriate actions. Those actions may consist
-in adding service instances or migrating those instances to better \ac{vm}s when service capacity
-should be increased, or in the opposite case, in releasing instances when service capacity need to be
-decreased.
-
-One of the regular dimensions in \ac{sla}s is availability. Successful distributed services are
-concurrently used by many customers. Service providers should guarantee service continuity, otherwise
-service clients will not rely on that provider and they will look for another, more reliable, one.
-Unfortunately, since complex software systems are always in need of modification, both platform and
-service components need to be eventually updated in order to fix bugs, remove security vulnerabilities
-or enhance their functionality. This software upgrading process might endanger the availability levels
-specified in a \ac{sla}. So, this is another source of trouble for service providers.
-
-\subsection{Requirements}
+\section{Requirements}
 \label{sec:elasticity-requirements}
 \citeauthor{herbst2013elasticity} in \cite{herbst2013elasticity} defines elasticity in cloud computing
 model as:
@@ -82,7 +37,7 @@ in software upgrades}.
 In the following sections we will cover in deep all these requirements giving its definition and
 some explanations for each one.
 
-\subsubsection*{Autonomy}
+\subsection*{Autonomy}
 \label{sec:elasticity-requirements-autonomy}
 Platforms being provided in \ac{paas} service model should deal itself (ideally without any human
 interaction) with the elastic behaviour of the services deployed by its customers.
@@ -92,7 +47,7 @@ In order to have an autonomic behaviour, an application or service should be car
 minimum of human interference. In that case, such software elements should be self-configuring,
 self-healing, self-optimising and finally self-protecting. To this end, a set of autonomic software
 components should be controlled by an autonomic manager, which is governed by a major-loop
-composed by four different stages:
+composed by four different stages (shown in Figure \ref{img:elasticity-requirements-autonomy}):
 
 \begin{enumerate}
 	\item{\keyword{monitor}: in this stage some information is collected by sensors on each managed
@@ -113,6 +68,13 @@ loop. To this end, the stages may access to a shared \keyword{knowledge base} wh
 can be found and interesting information can be generated in each stage. In most cases, such data
 needs to be considered in the first two stages.
 
+\begin{figure}
+	\centering{}
+	\includegraphics[width=0.5\textwidth]{chapters/elasticity/images/autonomy.png}
+	\caption[Major-loop for autonomy]{Major-loop to implement the autonomy requirement.}
+	\label{img:elasticity-requirements-autonomy}
+\end{figure}
+
 This general picture of autonomic computing can be easily tailored for cloud computing systems that
 follows the \ac{paas} service model. Through autonomic manager we want to reach a combination of:
 
@@ -122,7 +84,7 @@ follows the \ac{paas} service model. Through autonomic manager we want to reach 
 	\item{a specific set of rules, that depends on each customer applications deployed (\ac{sla}).}
 \end{itemize}
 
-\subsubsection*{Scalability}
+\subsection*{Scalability}
 \label{sec:elasticity-requirements-scalability}
 In order to have an elastic system the software services it provides should be \keyword{scalable}. This
 means that when incoming workload is increased, the capacity of the serving nodes should be also
@@ -182,7 +144,7 @@ that must be available under our services or applications. Hence our purpose in 
 thesis is finding an application design model that is able to take advantage of the elasticity
 provided by the cloud.
 
-\subsubsection*{Adaptability}
+\subsection*{Adaptability}
 \label{sec:elasticity-requirements-adaptability}
 In elasticity we refer to adaptivity as the possibility to ``optimally'' adjusting the computing capacity
 of a given service to the current workload, at run-time. So, besides being scalable, an elastic service
@@ -205,6 +167,8 @@ Adaptability as two different dimensions:
 \end{enumerate}
 
 The are two main approaches for reaching adaptivity: \keyword{proactive} and \keyword{reactive}.
+Figure \ref{img:elasticity-requirements-adaptability} illustrates when the different approaches
+enter in action following a workload change.
 
 In the proactive (or predictive) case, some workload analysis or workload modelling is done in order
 to predict the workload levels in the near future. With this knowledge the actions needed to correctly
@@ -215,11 +179,22 @@ On the other hand, with a reactive approach, both the workload and the service b
 monitored and adequate thresholds are set on different metrics. When those thresholds are reached some
 adapting actions are started.
 
+\begin{figure}
+	\centering{}
+	\includegraphics[width=0.7\textwidth]{chapters/elasticity/images/adaptability.png}
+	\caption[Different adaptability approaches]{The figure illustrate different adaptability approaches
+		that a \ac{paas} vendor can adopt to manage the elasticity. If it choose a reactive approach the
+		system adapt themselves after the workload change happens; instead if it choose a proactive approach
+		it prefer to react close as possible to the workload change; finally if it choose a predictive
+		approach it attempts to predict future workload changes.}
+	\label{img:elasticity-requirements-adaptability}
+\end{figure}
+
 In conclusion, proactive systems predict the forthcoming workload and apply any need reconfigurations
 before hand. Instead, reactive systems monitor the current real workload and reconfigure themselves
 when that current workload reaches a level that compromises their \ac{qos}.
 
-\subsubsection*{\acs{sla}-awareness}
+\subsection*{\acs{sla}-awareness}
 \label{sec:elasticity-requirements-slaAwareness}
 Cloud providers following any service model (including \ac{paas}) define a special kind of adaptive
 system with autonomic behaviour, since the customer-provider relation is driven by a \ac{sla}.
@@ -229,7 +204,7 @@ costs in order to maximize the business benefit.
 
 This induces a first differential factor between general autonomic computing systems and cloud computing
 environments. All non-functions quality aspects might be included in a \ac{sla} and such \ac{sla} 
-defines the quality-related objectives for those cloud providers. Besides those \ac{slo}, a \ac{sla}
+defines the quality-related objectives for those cloud providers. Besides those \glossarySng{slo}, a \ac{sla}
 should also specify which are the penalties applied to a provider when those \ac{slo}s are not achieved
 (assuming that clients satisfies its part of deal).
 
@@ -241,10 +216,10 @@ application-level performance guarantees and renting costs.
 So, one of the existing challenges for \ac{paas} providers is to elastically manage the services being
 deployed by multiple customers providing and guaranteeing a rich set of \ac{slo}s in their \ac{sla}s.
 
-\subsubsection*{Composability}
+\subsection*{Composability}
 \label{sec:elasticity-requirements-composability}
 As we argued in Section \ref{sec:elasticity-requirements-scalability}, the services being deployed in
-\ac{paas} system should be automatically scaled by the \ac{paas} itself. There are multiple approaches
+\ac{paas} systems should be automatically scaled by the \ac{paas} itself. There are multiple approaches
 to achieve this.
 
 In the first place, those services should not be monolithic; if they were the scaling decisions would
@@ -256,3 +231,57 @@ onto it.
 
 Instead, if the service is implemented by multiple small components, their scaling action will be faster
 and cheaper, since the amount of resources needed to manage them will be also smaller.
+Distributed services consist of multiple components that may be architected in layers. Such composability
+makes possible that the proactive performance models consider the behaviour of each component. Therefore,
+performance prediction model may be used to identify those components that are close to their saturation
+point, applying then the most appropriate scaling actions on them. These components are replicated in
+the regular case and define elements that are smaller than in monolithic designs.
+
+Service composability has other implications, too (shown in Figure \ref{img:elasticity-requirements-composability}).
+It is able to provide reusable components that might have been already deployed among our \ac{paas} service provider
+or among a third party one. Inter-service dependencies should be declared in the deployment descriptors and the
+\ac{sla}s of those external services should be analysed in order to establish the \ac{sla} of such global service.
+When those dependencies have been appropriately documented and are known by the scaling managers, any scaling
+action on a given component will also raise appropriate complementary scaling actions in its dependant
+component.
+
+\begin{figure}
+	\centering{}
+	\includegraphics[width=0.75\textwidth]{chapters/elasticity/images/composability.png}
+	\caption[Characterstics for service composability]{The figure illustrates the key characteristics that
+		lead to service composability \cite{serviceComposability}.}
+	\label{img:elasticity-requirements-composability}
+\end{figure}
+
+\subsection*{Service continuity in software upgrades}
+\label{sec:elasticity-requirements-serviceContinutiy}
+Distributed services should guarantee their service continuity. This means that clients expect a
+continuous availability. Real world software systems are never static. Clearly, software defects will
+drive change. Additionally, market pressures and customer demands for new functionalities also drive
+change, forcing service providers too continuously come up with newer version of the software that
+runs their services. A careful software upgrading procedure should be designed taking into consideration
+the term of the service's \ac{sla}, which in many cases will require some degree of service continuity
+and availability.
+
+\citeauthor{li2011evaluating} in \cite{li2011evaluating} a possible set of principles and mechanisms to
+consider in software upgrades taking into account defined \ac{sla}s. They must be followed in the given
+sequence, and they are:
+
+\begin{enumerate}
+	\item{\keyword{global consistency}: the updating actions should be applied without aborting any started
+		action; if some changes occur in the inter-communication protocol all involved parties should be
+		appropriately upgrade with the new one;}
+	\item{\keyword{service availability}: the overall service being upgraded should remain available
+		in the updating interval. This means that it should be active and accepting requests;}
+	\item{\keyword{coexistence and service continuity}: coexistence consists in maintaining active both
+		software versions: the one being replaced and the new one that replaces it. Service continuity
+		implies that every service request will not be ever blocked. Coexistence is a necessary condition
+		for achieving service continuity;}
+	\item{\keyword{state transfer}: the new software version may use a different state and such state will
+		need a translation from previous version to the new one. Even in case of maintaining both version
+		deployed in the same host, some kind physical copy might be needed;}
+	\item{\keyword{minimal overhead}: there multiple managerial tasks in order to upgrade correctly the
+		deployed software: new version deployment, old version removal, dynamic version management, etc.
+		Those tasks should be executed on multiple nodes and thus should be carefully scheduled in order
+		to minimize their effect on system performance.}
+\end{enumerate}

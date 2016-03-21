@@ -1,0 +1,34 @@
+%---------------------------------------------------------------------------------------------------
+%		objective.tex
+%
+%	This is the main file of the chapter that talk about multi-tenancy.
+%
+%	Author: Andrea Meneghinello
+% Version: 0.1
+%	Table of changes:
+%		12/03/2016 -> document definition
+%---------------------------------------------------------------------------------------------------
+\section{Objective}
+\label{sec:elasticity-objective}
+To conclude our discussion about elasticity and multi-tenancy we can assert that offering a multi-tenant
+service deployed over a \ac{paas} is a good solution both for companies and software-houses. Both can
+earn moneys due to economy of scale.
+
+As we just argued in this chapter, in order to offer a multi-tenant service, the application must be
+deployed over a \ac{paas} layer that is able to manage in efficient way the elasticity in order to
+support different workloads. Two complementary dimensions must be considered:
+
+\begin{itemize}
+	\item{elasticity of the \ac{paas} underlying hardware assets. Hence the software-houses have to
+		choose the one that offer a virtualization layer that is able to exploit as best it can these
+		assets;}
+	\item{design a good software architecture. A monolithic architecture is not the best on even if
+		placed over a good \ac{paas} provider.}
+\end{itemize}
+
+Purpose of the next chapters of this thesis is to analyse these two complementary aspects. In particular
+the next chapter illustrate some comparison tests that are been executed in order to compare how two
+different virtualization technologies are able to exploit the assets illustrated in Section
+\ref{sec:background-virtualization-assets}. Instead in the last chapter we want to propose a possible
+software architecture that want to exploit as best as it can the assets offered by \ac{paas} provider
+in order to obtain a multi-tenant deployed service.

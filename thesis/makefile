@@ -21,7 +21,10 @@ REPORT_CHAPTERS         = chapters/background/main.tex \
 						  chapters/background/sections/platform.tex \
 						  chapters/background/sections/definition.tex \
 						  chapters/elasticity/main.tex \
-						  chapters/elasticity/sections/elasticity.tex 
+						  chapters/elasticity/sections/introduction.tex \
+						  chapters/elasticity/sections/requirements.tex \
+						  chapters/elasticity/sections/multi-tenancy.tex \
+						  chapters/elasticity/sections/objective.tex 
 
 .PHONY: clean compile publish
 
