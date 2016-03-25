@@ -1,0 +1,36 @@
+%---------------------------------------------------------------------------------------------------
+%		main.tex
+%
+%	This is the main file of the chapter that talk about the measurments.
+%
+%	Author: Andrea Meneghinello
+% Version: 0.1
+%	Table of changes:
+%		21/03/2016 -> document definition
+%---------------------------------------------------------------------------------------------------
+\chapter{Measurements}
+\label{cap:measurements}
+In order to offer high level of service a \ac{paas} provider must install, on its physical systems,
+a virtualization layer that is able to exploit the underlying hardware as better as it can. Is not
+sufficient that the layer virtualize the fundamental assets (see Section
+\ref{sec:background-virtualization-assets}), it must contain also a good resource scheduler. It should
+be able to schedule the different workloads in devices that have hardware resources conform with the
+current workload in order to assure elasticity.
+
+In this chapter we want to try to isolate and understand the overhead introduced by \ac{vm}s
+(specifically \ac{kvm}) and containers (specifically Docker). The fact that Linux is able to host
+both \ac{vm}s and Docker containers creates the opportunity for an apple-to-apple comparison between
+these two virtualization technologies.
+
+Thus, in the following sections we report the results collected during the comparison tests. Each 
+section illustrate the purpose of the test, illustrate the collected results and try to explain them.
+
+\input{chapters/measurements/sections/introduction.tex}
+
+\input{chapters/measurements/sections/cpu.tex}
+
+\input{chapters/measurements/sections/storage.tex}
+
+\input{chapters/measurements/sections/network.tex}
+
+\input{chapters/measurements/sections/summary.tex}

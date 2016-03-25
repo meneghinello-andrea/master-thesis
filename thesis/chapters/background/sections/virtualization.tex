@@ -175,6 +175,52 @@ Linux containers have never reached a wide level of adoption because of their la
 has changed when a company named ``docCloud'' delivered an open-source project called \keyword{Docker}.
 We will deep about Docker and its architecture in Section \ref{sec:background-docker}.
 
+\subsection[\acs{kvm}]{\acf{kvm}}
+\label{sec:background-virtualization-kvm}
+\ac{kvm} is a Linux feature that allows Linux to act as a type 1\footnote{See Section
+\ref{sec:background-virtualization-types} for additional information about type 1 and type 2.} hypervisor
+running an unmodified guest \acs{os} inside a Linux process. \ac{kvm} uses hardware virtualization features
+in recent processors to reduce complexity and overhead.
+
+\ac{kvm} supports both emulated \acs{io} devices (through \ac{qemu}) and paravirtual \acs{io} devices
+(through virtio). The combination of hardware acceleration and paravirtual \acs{io} is designed with
+the aim to reduce the virtualization overhead to very low levels \cite{mcdougall2010virtualization}.
+\ac{kvm} is also able to support ``live migrations'' which permit to hardware engineers to evacuate
+some or all servers inside a data-centre for maintenance without disrupting the guest \acs{os}.
+
+Since a \ac{vm} has a static number of virtual-\acs{cpu}s and a fixed amount of \acs{ram}, its resource
+consumption is bounded. A single virtual-\acs{cpu} cannot use more than one real \acs{cpu} and each page
+of virtual-\acs{ram} maps to at most one page of physical pages in physical \acs{ram} (plus the nested page
+table). \ac{kvm} can resize \ac{vm}s while they are running through ``hotplugging'' and ``ballooning''
+of v\acs{cpu} and v\acs{ram}, although these techniques require support from the guest \acs{os} and it
+is rarely used in real cloud platforms.
+
+Because each \ac{vm} is a process, all normal Linux resource management facilities, like scheduling and
+cgroupgs (see Section \ref{sec:background-virtualization-types}) apply to \ac{vm}s. This simplifies the
+implementation and administration of the hypervisor but complicates resource management inside the guest
+\acs{os}.
+
+\acs{os}s generally assume that \acs{cpu}s are always running and the physical memory has relatively
+fixed access times, but under \ac{kvm} v\acs{cpu}s can be unscheduled without notification and v\acs{ram} can
+be swapped out, causing performance anomalies that can be hard to debug. \ac{vm}s also have two level
+of allocation and scheduling: one in the hypervisor and one in the host \acs{os}. Many cloud providers
+eliminate those problems by not overcommitting resources, pinning each v\acs{cpu} to a physical one,
+and locking all v\acs{ram} into real \acs{ram}. These techniques essentially eliminate scheduling
+activities inside the hypervisor. Moreover fixed resource allocation also simplifies the billing
+phase.
+
+\ac{vm}s naturally provide a certain level of isolation and security because of their narrow interface;
+the only way a \ac{vm} can communicate with the outside world is through a limited number of hyper-calls
+or emulated devices, both of which are controlled by the hypervisor. This is not a panacea, since a few
+hypervisor privilege escalation vulnerabilities have been discovered and they could allow a guest \acs{os}
+to ``break out'' of its \ac{vm} ``sandbox''.
+
+While \ac{vm} excel at isolation, they add overhead when sharing data between guests or between guest
+and hypervisor. Usually such sharing requires fairly expensive marshalling and hyper-calls. In the
+cloud, \ac{vm}s generally access storage through emulated block devices backed by image files; creating,
+updating and deploying such disk images can be time-consuming and collections of disk images with
+mostly-duplicate contents can waste storage space.
+
 \subsection{Main characteristics}
 \label{sec:background-virtualization-characteristics}
 Virtualization has three main characteristics: partitioning, isolation and encapsulation.

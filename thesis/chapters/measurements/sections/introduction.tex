@@ -1,0 +1,84 @@
+%---------------------------------------------------------------------------------------------------
+%		introduction.tex
+%
+%	This is file contains the introduction to the measurements.
+%
+%	Author: Andrea Meneghinello
+% Version: 0.1
+%	Table of changes:
+%		21/03/2016 -> document definition
+%---------------------------------------------------------------------------------------------------
+\section{Introduction}
+\label{sec:measurements-introduction}
+To measure the overhead we have configured our benchmarks to saturate all the available resources of the
+\acf{sut}. In particular Docker containers were not restricted by cgroups (see Section 
+\ref{sec:background-virtualization-types}) so they could consume the full set of resources of the \ac{sut}.
+Likewise, \ac{vm}s were configured with 16 v\acs{cpu}s and adequate v\acs{ram} to hold the benchmark's
+working sets.
+
+We used a set of micro-benchmarks to individually measure \acs{cpu}, main memory and network overhead in
+both scenarios. All the tests were performed on two identical server machines, which characteristics
+(for every machine) are listed in Table \ref{tbl:measurements-introduction-sut}. For the network test
+the two servers were linked through a Netgear M7300 series Gigabit switch and optical fibre cables to ensure
+a plausible network configuration. This hardware configuration is rather common for medium size servers in
+cloud data-centre, hence the collected data can provide us a good viewpoint on both technologies.
+
+As base \acs{os} we used Ubuntu 14.10 (Utopic Unicorn) 64-bit with Linux kernel 3.16.0, Docker 1.10,
+\ac{qemu} 2.1.0 and libvirt 1.2.8. For consistency, all Docker containers used an Ubuntu 14.10 base
+image and all \ac{vm}s used the Ubuntu 14.10 cloud image. Finally power management has been disabled
+during test execution.
+
+\begin{center}
+	\begin{tabular}{| l | r |}
+		\hline
+		\multicolumn{2}{| c |}{\acs{sut} main characteristics}              \\ \hline\hline
+		\acs{cpu} socket              & 2                                   \\
+		\acs{cpu} core                & 16                                  \\
+		\acs{cpu} model               & Intel Xeon E5-2630L v3              \\
+		\acs{cpu} L2 cache            & 256 KB                              \\
+		\acs{cpu} L2 cache per socket & 8                                   \\
+		\acs{cpu} L3 cache            & 20480 KB                            \\
+		\acs{cpu} L3 cache per socket & 1                                   \\
+		L2 cache per socket           & 8                                   \\
+		L3 cache per socket           & 1                                   \\ \hline
+		Available \acs{ram}           & 64 GB                               \\ \hline
+		\ac{nic}                      & \acs{pci} express 2 exit 10 Gigabit \\ \hline
+	\end{tabular}
+	\captionof{table}{\acf{sut} main characteristics}
+	\label{tbl:measurements-introduction-sut}
+\end{center}
+
+\subsection{Execution script}
+\label{sec:measurements-introduction-script}
+The very nature of the tests that are been executed bring us to find a way to \keyword{automatize} them
+with the purpose of quicken their execution and reducing the necessary human interaction.
+
+This approach is very common in big data-centre where much bigger workload operations are executed and
+environments are deployed. Making them mechanic allowed us to exploit all the available time, executing
+during all the 24 hours.
+
+To automate the procedures are been created some batch scripts that was able to deploy and start various
+environments and execute inside them the different tests. During every execution a virtual hard-drive was
+be mounted, after the bootstrap phase of the environment, in order to save the benchmark's data for a 
+future process of analysis and comparison.
+
+Even though many aspects of our work are mechanizable some of them are not. In particular some tasks have
+required human interaction in order to set-up correctly the work environments. We are speaking about the
+start-up or the shutdown of the Intel Hyper-Threading Technology (see Section
+\ref{sec:measurements-cpu-hyperThreadingTechnology}). This process was not mechanizable because it has
+requested access to the system \acs{bios}, a location not accessible by the batch scripts that need the
+base Linux \acs{os} to correctly execute.
+
+The script that we have build perform these steps:
+
+\begin{enumerate}
+	\item{lunch the environment (\ac{kvm} \ac{vm} o a Docker container);}
+	\item{mount the virtual hard-drive;}
+	\item{execute the benchmark tool reading configurations and writing output inside the virtual
+		hard-drive;}
+	\item{un-mount the virtual hard-drive;}
+	\item{stop the environment.}
+\end{enumerate}
+
+Finally, to avoid data losses the virtual hard-drive was backed-up after the completion of every
+benchmark.

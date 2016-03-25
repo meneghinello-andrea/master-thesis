@@ -1,0 +1,35 @@
+%---------------------------------------------------------------------------------------------------
+%		summary.tex
+%
+%	This is file contains the chapter summary.
+%
+%	Author: Andrea Meneghinello
+% Version: 0.1
+%	Table of changes:
+%		21/03/2016 -> document definition
+%---------------------------------------------------------------------------------------------------
+\section{Summary}
+\label{sec:measurements-summary}
+After the execution of the tests and have analysed the collected results we can now derive some conclusion
+about the two virtualization technologies: \ac{kvm} \ac{vm}s and Docker containers. 
+
+Both are, nowadays, mature technologies that have benefited of incremental hardware and software updates.
+In general, we can assert that there is, at most, a point of view that is advantageous for the hardware-virtualization
+level technologies and others that are more appropriate for the \acs{os}-virtualization level ones.
+
+If we look at the hardware performance we can observe that the Docker containers are able to exploit very well
+the available underlying hardware, except for the network delay (see Section \ref{sec:measurements-network-result}).
+Instead, in matter of adapt themselves to share the underlying available resources, we found that the
+\ac{vm}s are more mature than the counterpart.
+
+After working a little bit with Docker technology, we have appreciated its lightweight, the rapidity that
+it follows, and the easy \acs{api} that they provide to developers. Even though the Docker container are more
+recent than the \ac{kvm} \ac{vm}s, they provide to developers a good level of virtualization and make some tasks
+more easier (like build environments.) We expect that in nearly future this technology will be improved and largely
+preferred by many developers. 
+
+As we asserted in the previous chapter, the only adoption of a good virtualization layer, that is able to exploit
+the underlying hardware, is not sufficient to guarantee good levels of elasticity. Because of this, in the next
+chapter, aware of the experience matured with the performed tests, we want to introduce a possible software
+architecture that can provide good level of elasticity combined with the \acs{os}-virtualization level and that
+lead developers to easily generate multi-tenants applications. 

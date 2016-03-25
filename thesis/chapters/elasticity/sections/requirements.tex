@@ -10,7 +10,7 @@
 %---------------------------------------------------------------------------------------------------
 \section{Requirements}
 \label{sec:elasticity-requirements}
-\citeauthor{herbst2013elasticity} in \cite{herbst2013elasticity} defines elasticity in cloud computing
+\citeauthor{herbst2013elasticity} in \cite{herbst2013elasticity} define elasticity in cloud computing
 model as:
 
 \begin{quote}
@@ -37,7 +37,7 @@ in software upgrades}.
 In the following sections we will cover in deep all these requirements giving its definition and
 some explanations for each one.
 
-\subsection*{Autonomy}
+\subsection{Autonomy}
 \label{sec:elasticity-requirements-autonomy}
 Platforms being provided in \ac{paas} service model should deal itself (ideally without any human
 interaction) with the elastic behaviour of the services deployed by its customers.
@@ -84,7 +84,7 @@ follows the \ac{paas} service model. Through autonomic manager we want to reach 
 	\item{a specific set of rules, that depends on each customer applications deployed (\ac{sla}).}
 \end{itemize}
 
-\subsection*{Scalability}
+\subsection{Scalability}
 \label{sec:elasticity-requirements-scalability}
 In order to have an elastic system the software services it provides should be \keyword{scalable}. This
 means that when incoming workload is increased, the capacity of the serving nodes should be also
@@ -144,7 +144,7 @@ that must be available under our services or applications. Hence our purpose in 
 thesis is finding an application design model that is able to take advantage of the elasticity
 provided by the cloud.
 
-\subsection*{Adaptability}
+\subsection{Adaptability}
 \label{sec:elasticity-requirements-adaptability}
 In elasticity we refer to adaptivity as the possibility to ``optimally'' adjusting the computing capacity
 of a given service to the current workload, at run-time. So, besides being scalable, an elastic service
@@ -194,7 +194,7 @@ In conclusion, proactive systems predict the forthcoming workload and apply any 
 before hand. Instead, reactive systems monitor the current real workload and reconfigure themselves
 when that current workload reaches a level that compromises their \ac{qos}.
 
-\subsection*{\acs{sla}-awareness}
+\subsection{\acs{sla}-awareness}
 \label{sec:elasticity-requirements-slaAwareness}
 Cloud providers following any service model (including \ac{paas}) define a special kind of adaptive
 system with autonomic behaviour, since the customer-provider relation is driven by a \ac{sla}.
@@ -216,7 +216,7 @@ application-level performance guarantees and renting costs.
 So, one of the existing challenges for \ac{paas} providers is to elastically manage the services being
 deployed by multiple customers providing and guaranteeing a rich set of \ac{slo}s in their \ac{sla}s.
 
-\subsection*{Composability}
+\subsection{Composability}
 \label{sec:elasticity-requirements-composability}
 As we argued in Section \ref{sec:elasticity-requirements-scalability}, the services being deployed in
 \ac{paas} systems should be automatically scaled by the \ac{paas} itself. There are multiple approaches
@@ -253,7 +253,7 @@ component.
 	\label{img:elasticity-requirements-composability}
 \end{figure}
 
-\subsection*{Service continuity in software upgrades}
+\subsection{Service continuity in software upgrades}
 \label{sec:elasticity-requirements-serviceContinutiy}
 Distributed services should guarantee their service continuity. This means that clients expect a
 continuous availability. Real world software systems are never static. Clearly, software defects will

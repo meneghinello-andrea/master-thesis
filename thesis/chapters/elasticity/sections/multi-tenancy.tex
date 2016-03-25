@@ -11,9 +11,9 @@
 \section{Multi-tenancy}
 \label{sec:elasticity-multiTenancy}
 \keyword{Multi-tenancy} refers to a software's architecture principle (or hardware) on which a single instance
-of the application is executed inside one (or more) server(s), offering its service to many clients (tenant)
+of an application is executed inside one (or more) server(s), offering its service to many clients (tenant)
 at the same time. The concept must not be confused with the one of multi-instance architecture. The last one
-refers when multiple separated instances (or hardware systems) are made available to different
+occurs when multiple separated instances (or hardware systems) are made available to different
 organizations. Instead, in a multi-tenant architecture the applications are designed to partition 
 its data and configurations in a vertical way; every tenant will operate with one of these vertically separated
 parts. Figure \ref{img:elasticity-multiTenancy-difference} shows the difference stacks formed by the two
@@ -28,8 +28,8 @@ different models.
 \end{figure}
 
 Multi-tenancy is a logical consequence of the virtualization technology, on which we can apply a multi-tenant
-approach on infrastructural's resources. Actually we assist to creation of logically
-separated virtual environments which operating on the same physical components. 
+approach on infrastructure resources. Actually we assist to the creation of logically separated virtual environments
+which operate on the same physical components. 
 
 Although the concept itself indicates that there are shared resources (hardware or software), what really
 makes the difference is at \keyword{which level resources become multi-tenant}. For example \ac{aws} are
@@ -56,12 +56,12 @@ requirements:
 \begin{itemize}
 	\item{\keyword{availability}: the entire service must be redundant in order to ``survive'' to a possible
 		malfunctioning of the underlying infrastructure, software errors or both;}
-	\item{\keyword{secure isolation}: every tenant must have access only to its data and must do not interfere
+	\item{\keyword{secure isolation}: every tenant must have access only to its data and must not interfere
 		with concurrent activities of other tenants; hence the provider must assure, to every customer, that this
 		situation cannot happen\footnote{This property can be proved through unit-testing activities that have the
 		aim to discover such security lack.};}
 	\item{\keyword{guarantee of service}: activities of different tenants must be isolated form each other and it
-		is necessary guarantee optimal performance both in normal condition, when some errors occur or workload
+		is necessary guaranteeing optimal performance both in normal condition, and when some errors occur or workload
 		changes;}
 	\item{\keyword{management}: it is essential that software-houses are able to monitor and execute the
 		provisioning of all necessary resources in a rapid way in order to maintain the promised service levels.}
@@ -69,22 +69,22 @@ requirements:
 
 \subsection{Limits}
 \label{sec:elasticity-multiTenancy-limits}
-Thanks to a multi-tenant architecture service like Facebook are been able to increase their user-base
-in little time. From a developer point of view a multi-tenant architecture is complicated and can present
+Thanks to a multi-tenant architecture services like Facebook were been able to increase their user-base
+in little time. From a developer point of view, a multi-tenant architecture is complicated and can present
 some risks:
 
 \begin{itemize}
 	\item{\keyword{inflexibility}: if we are deploying a service with sensitive data it is important to
-		observe privacy laws; they vary a lot from state to state. In many cases cloud-applications have to
-		been executed in different data-centre to avoid a decline of the offered service, or to prevent a
+		observe privacy laws; they vary a lot from state to state. In many cases cloud-applications are
+		executed in different data-centre to avoid a decline of the offered service, or to prevent a
 		possible absence of the offered service. Privacy problems can lead developers in avoiding this paradigm;}
-	\item{\keyword{barely security}: if the software is not build and properly tested may occur that a
-		company may be able to access to data or configurations of other companies; Companies do not migrate to
+	\item{\keyword{bare security}: if the software is not build and properly tested, it may happen that a
+		company may be able to access to data or configurations of other companies; Companies will not migrate to
 		our solution if we are not be able to assure that their data are safely safeguard;}
 	\item{\keyword{offered power}: the different companies that benefit of the service may affirm that
 		the service is not able to support their workload. \ac{paas} provider, as we just argued, must offer
 		good elasticity mechanisms that must be well exploited by the software architecture;}
-	\item{\keyword{paradox of have to faces with higher costs}: in many cases the expenditure of re-building
-		an entire service or move data in this new platforms may be not negligible both for software-houses and
+	\item{\keyword{paradox of having to faces with higher costs}: in many cases the expenditure of re-building
+		an entire service or moving data in this new platforms may be not negligible both for software-houses and
 		companies.}
 \end{itemize}
