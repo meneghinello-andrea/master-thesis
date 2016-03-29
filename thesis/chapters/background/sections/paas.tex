@@ -37,15 +37,10 @@ if we adopt the \ac{paas} model, we are only responsible for our code and its da
 	\label{img:background-paas-spiResponsibilities}
 \end{figure}
 
-As we argued in Section \ref{sec:background-cloudComputing-cloudDepoymentModels}, \ac{paas} is possible
+As we argued in Section \ref{sec:background-cloudComputing-cloudServiceModels}, \ac{paas} is possible
 because is ``sitting'' over the \ac{iaas} infrastructure and through virtualization is able to provide many
 features to developers. In following sections we will deep the concept of \ac{paas}
-analysing its main characteristics and and the scenarios in which it is mostly useful and where it may not
-be the best option. 
-
-Later, in Section \ref{sec:background-virtualization} and \ref{sec:background-docker}, we will respectively
-describe virtualization technique and containerization with Docker because they are used to ``build''
-the software deployment units managed by the \ac{paas} level.
+analysing its main characteristics and and the scenarios in which it is mostly useful. 
 
 \subsection{Main characteristics}
 \label{sec:background-paas-characteristics}
@@ -90,7 +85,7 @@ to get to present the \acs{os} level of virtualization that cover a relevant par
 \subsection{Where it makes sense}
 \label{sec:background-paas-whereToUse}
 \ac{paas} is very useful in any situation where multiple developers work on a development project or
-where other external parties need to interact with the development process. As the case study illustrated
+where other external parties need to interact with the development process. As the example illustrated
 below, it is proving invaluable for those who have an existing data source, for example sales information
 from a \ac{crm} tool, and want to create applications which leverage that data. Finally \ac{paas} is useful
 where developers wish to automate testing and deployment services.
@@ -101,21 +96,74 @@ difficulties around rapid development and iteration of software.
 Some examples of \ac{paas} include \ac{gae} \cite{googleAppEngine}, Microsoft Windows Azure
 \cite{windowsAzure} and finally Salesforce.com \cite{salesforcePlatform}.
 
-\subsection{Where it may not be the best option}
-\label{sec:background-paas-whereNotToUse}
-There are many positive aspects that bring us adopting \ac{paas}, but there also some scenarios where it
-may not be ideal. Examples include:
+%\subsection{Where it may not be the best option}
+%\label{sec:background-paas-whereNotToUse}
+%There are many positive aspects that bring us adopting \ac{paas}, but there also some scenarios where it
+%may not be ideal. Examples include:
+%
+%\begin{itemize}
+%	\item{where the applications need to be highly portable\footnote{In terms of where they are hosted.};}
+%	\item{where proprietary languages or approaches would impact on the development process;}
+%	\item{where a proprietary language would hinder later moves to others provides. Concerns are raised
+%		about vendor lock-in \cite{vendorLockin};}
+%	\item{where application performance requires customization of the underlying hardware and/or software.}
+%\end{itemize}
+
+\subsection{Real platforms}
+\label{sec:background-paas-example}
+In the previous sections we have illustrated what cloud computing is and how it can make resources
+available to us through the virtualization technique. 
+
+Now we want to illustrate some of the major \ac{paas} provider competitors in the market. Each one 
+has characteristics that differentiate it from the others. In the following section we will see that
+some of the major competitors have started the integration of the Docker \ac{api} inside their platforms.
+
+\subsubsection*{Cloud unit}
+\label{sec:background-paas-example-cloudUnit}
+CloudUnit \cite{cloudUnitHomepage} is an open-source \ac{paas} for Java applications. It provides an
+automated and standardized platform for developers to build and run Java applications, as faster as
+possible, and operational to provision and orchestrate environments.
+
+Its main characteristics are:
 
 \begin{itemize}
-	\item{where the applications need to be highly portable\footnote{In terms of where they are hosted.};}
-	\item{where proprietary languages or approaches would impact on the development process;}
-	\item{where a proprietary language would hinder later moves to others provides. Concerns are raised
-		about vendor lock-in \cite{vendorLockin};}
-	\item{where application performance requires customization of the underlying hardware and/or software.}
+	\item{\keyword{infrastructure agnostic}: it is able to run on top of any \acs{it} infrastructure
+		(\ac{vm}s, bare-metal, public, private and also hybrid cloud, etc.);}
+	\item{\keyword{tools}: developers can deploy new or legacy applications without changing any line
+		of code and using their preferred tools;}
+	\item{\keyword{portability}: it is based on Docker which ensures that deployed applications will
+		work seamlessly on any environment;}
+	\item{\keyword{open-source}: it is able to eliminate lock-in problem because it is licensed under
+		the GNU public license 3.0.}
 \end{itemize}
 
-\subsection{A case study}
-\label{sec:background-paas-caseStudy}
+\subsubsection*{Docker data center}
+\label{sec:background-paas-example-dockerDataCentre}
+At the end of February Docker announced \cite{dockerDataCentrePresentation} the release of its data-centre
+\cite{dockerDataCentre} (shown in Figure \ref{img:background-cloudPlatform-dockerDataCetre}) which
+brings containers management and services deployment to the enterprise
+with a production ready \ac{caas} that is supported by Docker and hosted locally, behind their firewalls.
+
+The biggest difference between Docker data-centre and other \ac{paas} providers is that Docker \ac{caas}
+is an end-to-end fully Docker-native platform. This means that users can utilize the Docker \ac{cli}
+and the full set of \acs{api}. The platform is extremely pluggable as they believe in the philosophy of
+``batteries included, but swappable.'' Users can simply plug Docker \ac{caas} into their existing
+environments, avoiding vendor lock-in.
+
+\begin{figure}
+	\centering{}
+	\includegraphics[width=0.75\textwidth]{chapters/background/images/docker-datacentre.png}
+	\caption[Docker data-centre architecture]{Docker data-centre architecture \cite{dockerDataCentreArchitecture}.}
+	\label{img:background-cloudPlatform-dockerDataCetre}
+\end{figure}
+
+\ac{paas} solutions are notorious for locking customers into using a particular infrastructure. They
+are often cobbled together solutions that are not natively integrated. For instance, you could use
+something like OpenShift, but then your orchestration might be Kubernetes, while also using the open
+source Docker engine.
+
+\subsection{A real example}
+\label{sec:background-paas-realExample}
 Menumate \cite{menumateCaseStudy} is a provider of point of sale hardware and software for the hospitality
 industry across Australasia. It has taken advantage of the Force.com \ac{paas} to migrate over time a
 series of legacy applications used in the business.
@@ -131,3 +179,7 @@ has meant Trineo could take advantage of both existing integration and deploymen
 Utilizing a \ac{paas} development environment has resulted in the creation of applications being
 significantly faster than would otherwise be the case. In absence of \ac{paas}, the cost of developing
 applications would be prohibitive for many companies.
+
+\ac{paas} can be provided to the end-user as a \ac{vm}-based solution or as a container-based solution. To 
+better understand pro \& cons of both we are going to describe them in detail, respectively in Section
+\ref{sec:background-virtualization} and Section \ref{sec:background-docker}.

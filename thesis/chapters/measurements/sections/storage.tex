@@ -30,13 +30,13 @@ L3-cache was exceeded.
 
 \subsection{Stream benchmark}
 \label{sec:measurements-storage-stream}
-The Stream benchmark is a synthetic benchmark program that measures sustainable memory bandwidth when
-performing simple operation on vectors. Performance is dominated by the memory bandwidth of the system
-with the working set engineered to be significantly larger than the available caches. The main determinants
-of performance are the bandwidth to main memory, and to a much lesser extent, the cost of handling 
-\ac{tlb} misses. The memory access pattern is regular and the hardware pre-fetchers typically latch on
-to the access pattern and pre-fetch data before it is needed. Performance is therefore gated by memory
-bandwidth and not by latency.
+The Stream benchmark \cite{streamBenchmark} is a synthetic benchmark program that measures sustainable
+memory bandwidth when performing simple operation on vectors. Performance is dominated by the memory
+bandwidth of the system with the working set engineered to be significantly larger than the available
+caches. The main determinants of performance are the bandwidth to main memory, and to a much lesser
+extent, the cost of handling \ac{tlb} misses. The memory access pattern is regular and the hardware
+pre-fetchers typically latch on to the access pattern and pre-fetch data before it is needed. Performance
+is therefore gated by memory bandwidth and not by latency.
 
 The intent of Stream is not to suggest that ``real'' applications have no data re-use, but rather to
 decouple the measurement of the memory subsystem from the hypothetical ``peak'' performance of the machine.

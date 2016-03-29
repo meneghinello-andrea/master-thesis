@@ -65,14 +65,14 @@ environments.
 
 \subsection{Linpack benchmark}
 \label{sec:measurements-cpu-linpack}
-\ac{hpl} is a benchmark that measures the performance of a node or a cluster using a workload
-that is characteristic of some scientific and technical applications. It is able to solve a dense
-system of linear equations. Each system is represented as a matrix that will be divided into smaller
-pieces, called ``tiles'', and distributed across the available processors or cluster's nodes. Final
-performance is reported as the number of \ac{flops} achieved by the system. Users are able to configure
-the benchmark varying the size of the problem and a number of parameters that describe how the problem
-is solved. Some of the parameters describe how the problem is decomposed into tiles, and how those
-tiles are distributed over the available resources.
+\ac{hpl} \cite{linpackBenchmark} is a benchmark that measures the performance of a node or a cluster
+using a workload that is characteristic of some scientific and technical applications. It is able to
+solve a dense system of linear equations. Each system is represented as a matrix that will be divided
+into smaller pieces, called ``tiles'', and distributed across the available processors or cluster's
+nodes. Final performance is reported as the number of \ac{flops} achieved by the system. Users are able
+to configure the benchmark varying the size of the problem and a number of parameters that describe
+how the problem is solved. Some of the parameters describe how the problem is decomposed into tiles,
+and how those tiles are distributed over the available resources.
 
 The tool itself is a collection of subroutines that analyse and solve linear equations and linear
 least-square problems. Originally was designed for supercomputers in the 1970s and early 1980s, it is able

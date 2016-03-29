@@ -12,12 +12,11 @@
 \label{sec:background-cloudComputing}
 Cloud computing provides shared resources and data to devices on-demand; providers commonly offer a 
 ``\keyword{\glossarySng{pay-per-use}}'' model to pay used resources. Hence the pay-per-use model
-in \acs{it} is becoming available to the market. It has been proved that it is an effective way to
-reduce \acs{it} costs without sacrificing software quality. Consequently the demand for highly
-responsive, reactive and cheap \ac{saas}, made by end-users and companies, is increasing (as shown
-in Figure \ref{img:background-cloudComputing-saasInterest}).
-
-%TODO -> controllare se inserire una reference in "It has been proved"
+in \acs{it} is becoming available to the market. It has been proved (see Section
+\ref{sec:background-cloudComputing-capexOpex}) that it is an effective way to reduce \acs{it} costs
+without sacrificing software quality. Consequently the demand for highly responsive, reactive and cheap
+\ac{saas}, made by end-users and companies, is increasing (as shown in Figure
+\ref{img:background-cloudComputing-saasInterest}).
  
 \begin{figure}
 	\centering{}
@@ -29,25 +28,16 @@ in Figure \ref{img:background-cloudComputing-saasInterest}).
  	\label{img:background-cloudComputing-saasInterest}
 \end{figure}
 
-Cloud computing helps also software-houses, providing them \keyword{ready-to-use work environments}.
-This solution makes software-houses save both money and time because developers do not waste time in 
-building the work environments on their own. In addiction those work environments are \keyword{elastic},
-hence they can build and deploy their application and make them ubiquitous. Therefore the demand for
-this particular kind of cloud platform is increasing, as shown in Figure
-\ref{img:background-cloudComputing-paasInterest}.
+In short cloud computing takes care of supplying \ac{ict} as a service; actually, one of the most diffused
+views about cloud computing is the following:
 
-\begin{figure}
-	\centering{}
-	\includegraphics[width=0.75\textwidth]{chapters/background/images/paas-interest.png}
-	\caption[Trends in searching ``\acs{paas}'' on Google]{\acf{paas} terms search since 2004 in Google's
-		investigation made all over the world. (\footnotesize{source	Google Trends}\normalsize{)}}
-	\label{img:background-cloudComputing-paasInterest}
-\end{figure}
-
-To make their software exploit the elasticity offered by cloud environments, software-houses need to redesign
-them using appropriate architectural patterns. Before discussing about those patterns, it is necessary to do a
-brief digression about what cloud computing really is and why in the nearly future many more companies and
-software-house will start a migration to it.
+\begin{center}
+	\begin{quote}
+		``I don’t care where my servers are, who manages them, where my documents are stored, or where my
+		applications are hosted. I just want them always available and access them from any device connected
+		through Internet. And I am willing to pay for this service for as a long as I need it.''
+	\end{quote}
+\end{center}
 
 The most comprehensive definition of what cloud computing is comes from \ac{nist} in \cite{nistCloudComputing}:
 
@@ -59,10 +49,10 @@ The most comprehensive definition of what cloud computing is comes from \ac{nist
 	\end{quote}
 \end{center}
 
-In following Sections we will show, in details, the benefits of its adoption by presenting its main
+In the following Sections we will show, in details, the benefits of its adoption, presenting its main
 characteristics.
 
-\subsection*{Moving from platform ownership to platform management}
+\subsection{Moving from platform ownership to platform management}
 \label{sec:background-cloudComputing-capexOpex}
 When companies decide to design, and consequently build, a new software service they have to plan how
 many resources (compute capacity, storage and networking) making available in order to respect the defined
@@ -122,7 +112,7 @@ in the case of Zynga, chose to base its new business on the Amazon infrastructur
 difference is that Netflix never chose to change its infrastructure supplier when it saw that his
 business was starting to succeed. This choice allowed Netflix to become the major \ac{vod} competitor.
 
-\subsection*{Cloud Computing key characteristics}
+\subsection{Key characteristics}
 \label{sec:background-cloudComputing-characteristics}
 Taking as a reference the \ac{nist} definition of cloud computing \cite{nistCloudComputing}, a pool of resources
 must offer the following characteristics (shown in Figure \ref{img:background-cloudComputing-characteristics})
@@ -154,7 +144,7 @@ to the end-users to be considered a cloud environment:
 	\label{img:background-cloudComputing-characteristics}
 \end{figure}
 
-\subsection*{Available service models}
+\subsection{Cloud Service Models}
 \label{sec:background-cloudComputing-cloudServiceModels}
 Nowadays cloud computing makes available many service models (shown in Figure
 \ref{img:background-cloudComputing-serviceModels}):
@@ -202,8 +192,6 @@ create this transportation analogy:
 	\label{img:background-cloudComputing-serviceModels}
 \end{figure}
 
-\subsection*{Available deployment models}
-\label{sec:background-cloudComputing-cloudDepoymentModels}
 Cloud Computing can assume different forms:
 
 \begin{itemize}
@@ -224,7 +212,7 @@ Cloud Computing can assume different forms:
 		(e.g. cloud bursting for load balancing between clouds).}
 \end{itemize}
 
-\subsection*{Isolation and resource control}
+\subsection{Isolation and Resource Control}
 \label{sec:background-cloudComputing-isolationResource}
 With the adoption of cloud computing, software-houses have isolation between hardware management and the software
 development that makes possible to separate the work of hardware engineers and software developers.
