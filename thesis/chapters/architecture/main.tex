@@ -1,0 +1,33 @@
+%---------------------------------------------------------------------------------------------------
+%		main.tex
+%
+%	This is the main file of the chapter that talk about a possible software architecture.
+%
+%	Author: Andrea Meneghinello
+% Version: 0.1
+%	Table of changes:
+%		21/03/2016 -> document definition
+%---------------------------------------------------------------------------------------------------
+\chapter{Architecture}
+\label{cap:architecture}
+After having analysed, in Chapter \ref{cap:measurements}, two virtualization alternative techniques that
+a \ac{paas} provider can make available to us we want to conclude our discussion talking about the other
+side of the coin to obtain elasticity: the software architecture.
+
+As we said in Chapter \ref{cap:elasticity}, elasticity can be obtained by blending together a virtualization
+layer (that exploits as better it can the underlying hardware) and a good software architecture (that is able
+to take advantage of the functionalities provided by the virtualization layer).
+
+Thus, in this chapter we want to discuss about \acf{soa} as a possible solution for building elastic
+applications or services. In particular in Section \ref{sec:architecture-introduction} we will do
+a brief introduction about the state-of-the-art in software architectures to understand why they are not
+good candidates to obtain elasticity. Hereafter, in Section \ref{sec:architecture-soa} we will introduce
+the concept of \ac{soa} and we will explain how we can reconsider it in the cloud landscape. Finally, in
+Section \ref{sec:architecture-proposal} we will discuss about a possible software architecture that,
+combined with Docker containers, can lead to build elastic and multi-tenant applications.
+
+\input{chapters/architecture/sections/introduction.tex}
+
+\input{chapters/architecture/sections/soa.tex}
+
+\input{chapters/architecture/sections/proposal.tex}

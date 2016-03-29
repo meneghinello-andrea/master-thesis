@@ -1,0 +1,219 @@
+%---------------------------------------------------------------------------------------------------
+%		proposal.tex
+%
+%	This is file contains an introduction about the SOA architectural desing.
+%
+%	Author: Andrea Meneghinello
+% Version: 0.1
+%	Table of changes:
+%		21/03/2016 -> document definition
+%---------------------------------------------------------------------------------------------------
+\section{A new \acs{paas} architecture}
+\label{sec:architecture-proposal}
+As we argued in the previous section a classic \ac{soa} approach does not fit well with a cloud
+architecture, but the base concept remains valid. Thus we have to revisit the definition of
+service in order to make it fit with the cloud needs and possibly exploit as better as it can the
+concept of elasticity provided by the model.
+
+The main problem with services defined by the \ac{soa} approach is their size. Most of the time they
+are to coarse-grained to scale efficiently. Thus, a need for smaller service is risen: their name will
+be \keyword{micro-services}.
+
+Microservices are becoming the cloud architecture of choice because they offer the ability to 
+loosely couple applications into discrete services that can be surgically changed without requiring
+disruptive overhauls. This approach enables the responsiveness and rapid change needed by the business.
+Thus, with them we are able to switch from horizontal services to vertical ones.
+
+With the preceding results, given in Chapter \ref{cap:measurements}, we have chosen to base our
+architecture on Docker containers and use the micro-services as a possible architecture to provide an
+elastic and multi-tenant application deployed in the cloud.
+
+\subsection{Micro-services}
+\label{sec:architecture-proposal-microservices}
+In computing, micro-services is a software architecture style in which complex applications are
+composed of small, independent processes communicating with each other using language-agnostic 
+\acs{api}s. These services are \keyword{small building blocks}, \keyword{highly decoupled} and 
+\keyword{focussed} on doing a small task, facilitating a modular approach to system-building.
+
+A micro-services architecture differs from a \ac{soa} architecture in that the latter aims at integrate
+various (business) applications whereas several micro-services belong to on application only. It also
+lends itself to a continuous delivery development process.
+
+The main properties of micro-services architecture are:
+
+\begin{itemize}
+	\item{services are easy to replace;}
+	\item{services are organized around capabilities (e.g., user interface, recommendation,
+		logistics, billing, etc.);}
+	\item{services can be implemented using different programming languages, databases, hardware and
+		software environments, depending on what fits best;}
+	\item{architectures are symmetrical rather than hierarchical (producer - consumer).}
+\end{itemize}
+
+The philosophy of micro-services architecture essentially equals the Unix philosophy of ``Do one thing and do
+it well''. Fundamentally:
+
+\begin{itemize}
+	\item{the services are small, fine-grained in order to perform a single function;}
+	\item{the organization culture should embrace automation of deployment and testing. This eases the burden
+		on management and operations;}
+	\item{the culture and design principles should embrace failure and faults, similar to anti-fragile systems;}
+	\item{each service is elastic, resilient, composable, minimal, and complete.}
+\end{itemize}
+
+In order to correctly adapt the architecture with the cloud needs and pass the limit of \ac{soa} architecture,
+see Section \ref{sec:architecture-soa-compatibility}, we must consider some aspects. In the following
+section we will present those concepts.
+
+\subsection{Ten commandments of micro-services}
+\label{sec:architecture-proposal-microservices-commandments}
+When we are going to design a micro-services architecture there are some aspects that we must consider.
+\citeauthor{microservicesCommandments} in \cite{microservicesCommandments} group all the concepts in those
+so-called ``ten commandments'' of micro-services. They are:
+
+\begin{enumerate}
+	\item{clean separation of stateless and stateful services}
+	\item{do not share libraries or \ac{sdk}}
+	\item{avoid host affinity}
+	\item{focus on services with one task in mind}
+	\item{use lightweight messaging protocol for communication}
+	\item{design a well-defined entry point and exit point}
+	\item{implement a self-registration and discovery mechanism}
+	\item{explicitly check for rules and constraints}
+	\item{prefer polyglot over single stack}
+	\item{maintain independent revision and build environments}
+\end{enumerate}
+
+\subsubsection*[Commandment 1]{Clean separation of stateless and stateful services}
+\label{sec:architecture-proposal-microservices-commandments-1}
+Applications composed of micro-services contain both \keyword{sateless} and \keyword{stateful} services.
+It is important to understand the constraints and limitations of implementing stateful services. If a
+service relies on the state, it should be separated into a dedicated component that's easily accessible.
+
+One of the key advantages of micro-services is the ability to scale rapidly. Like other distributed
+computing architectures, micro-services scale better when they are stateless. In regards to Docker
+container in seconds we are able to launch multiple containers on many hosts. Each one running an
+autonomous service without acknowledge the presence of other services. This makes it possible to
+precisely scale the required services instead of scaling the \ac{vm}s. For this pattern to work seamlessly,
+services should be stateless. Docker container are ephemeral, as we seen in Section 
+\ref{sec:background-docker-dataManagement}, an thus become an ideal choice for micro-services.
+
+A micro-services-based application or service my contain also stateful services in the form of \ac{dbms},
+\ac{nosql} and others. These are packaged as containers with unique attributes. Typically, stateful
+services offload persistence to the host, which make it difficult to port containers from one host to
+another one.
+
+Usually, stateful services offload persistence to the host, or use highly available cloud data stores to
+provide a persistence layer. Both approaches introduce complications: offloading to the host makes it
+difficult to port containers from one host to another, and highly available data store trade consistency
+for availability, meaning that we have to design for eventual consistency in our data model.
+
+Technologies, such as Flocker \cite{flockerHomepage}, help address the host portability problem by creating
+a persistence layer that is host independent.
+
+\subsubsection*[Commandment 2]{Do not share libraries or \ac{sdk}}
+\label{sec:architecture-proposal-microservices-commandments-2}
+The premise of micro-services is based on autonomous and fine-grained units of code that \keyword{do one
+thing and one thing only}. This is closely aligned with the principle ``do not repeat yourself'' which
+states that every pieces of knowledge must have a single, unambiguous, authoritative representation within
+a system.
+
+Every service is a self-contained unit of \acs{os}, runtime, framework, third-party libraries and code. When
+one or more containers rely on the same library, it may be tempting to share the dependencies by centrally
+configuring them on the host. This model introduces complexities in the long run. It not only it brings host
+affinity, but also breaks the \ac{cicd} pipeline. Upgrading libraries or \ac{sdk} might end up breaking a
+service. Each service should be treated entirely independent of others.
+
+In some scenarios, the commonly used libraries and \ac{sdk}s can be moved to a dedicated service that can be
+managed independently, making the service immutable.
+
+\subsubsection*[Commandment 3]{Avoid host affinity}
+\label{sec:architecture-proposal-microservices-commandments-3}
+We discussed briefly this point in Section \ref{sec:architecture-proposal-microservices-commandments-2}. No
+assumptions can be made about the host on which the service would run.
+
+Each service can be launched on any available host in the cluster that meets the predefined requirements.
+These requirements are more aligned with the specifications, like the \acs{cpu} type, storage type,
+region and availability zones rather than the software configuration. Services should function
+independently of the host on which they are deployed.
+
+\subsubsection*[Commandment 4]{Focus on services with one task in mind}
+\label{sec:architecture-proposal-microservices-commandments-4}
+Each service must be designed with one task in mind. It may map to one function or a module with a
+well-defined boundary. This means that there may also be one process per container, but that's not
+always the case.
+
+Docker framework encourages the pattern of running one background process/daemon per container. This
+makes containers fundamentally different from \ac{vm}s. While a \ac{vm} may run the whole stack, a
+container owns a subset of the stack. For example, when refactoring a \ac{lamp} web application for
+micro-services, the web tier with Apache may run in a dedicated container while MySql can be stored
+in another one.
+
+\subsubsection*[Commandment 5]{Use lightweight messaging protocol for communications}
+\label{sec:architecture-proposal-microservices-commandments-5}
+There is no hard-and-fast rule on how micro-services talk to each other. The can use synchronous or
+asynchronous channel with any protocol that is platform agnostic. Each service implements a simple
+request/response mechanism. A common choice is to expose wll-known \acs{http} endpoint that can be
+invoked through \acs{rest} \acs{api} calls.
+
+While \acs{http} and \acs{rest} are preferred for synchronous communications, it is becoming increasingly
+popular to use asynchronous communication between micro-services. Many, nowadays, consider the \ac{amqp}
+as the preferred protocol. Developing micro-services with an asynchronous communication model, while
+sometimes a little more complex, can have great advantages in term of minimizing latency and enabling
+event driven interactions with applications.
+
+\subsubsection*[Commandment 6]{Design well-defined entry point and exit point}
+\label{sec:architecture-proposal-microservices-commandments-6}
+In most cases, micro-services are treated like black box, with less visibility into the actual
+implementation. Inconsistent entry points and exit point may increase the development phase of a
+service.
+
+Similar to the interface definition in \ac{com} and \ac{corba}, micro-services should expose a
+well-defined, well-documented contract. This will enable services to seamlessly communicate to each
+other. Even if micro-service is not expected to return an explicit value, it may be important to send
+the success/failure flag. Implementing a single exit point makes it easy to debug and maintain the
+code.
+
+\subsubsection*[Commandment 7]{Implement a self-registration and discovery mechanism}
+\label{sec:architecture-proposal-microservices-commandments-7}
+One key aspects of micro-services is the discovery of a service by one consumer. A central registry is
+maintained for looking up all available services.
+
+Each micro-service handles registration within the central service registry. They typically register
+during the start-up and periodically update the registry with current information. When it terminates
+it needs to be unregistered from the registry. The registry plays a critical role in orchestrating
+deployed micro-services.
+
+\subsubsection*[Commandment 8]{Explicitly check for rules and constraints}
+\label{sec:architecture-proposal-microservices-commandments-8}
+During the deployment phase, micro-services may need to consider special requirements and constraints
+that impact performance. For example, the in-memory cache service needs to be on the same host as the
+web \acs{api} service. The database micro-service may have to be deployed on a host with \ac{ssd} storage.
+All these constraints are typically identified during the service design phase.
+
+If rules and constraints are not considered by the SysOps team, services may need to raise alerts or
+log appropriate messages about implications or possible side effects. Under extreme conditions, a
+micro-service may have to shut-down if the mandatory rules are not respected during the deployment
+phase.
+
+\subsubsection*[Commandment 9]{Prefer polyglot over single stack}
+\label{sec:architecture-proposal-microservices-commandments-9}
+One advantage of using micro-services is the ability to choose the best technology whereby implement
+the service. We can adopt the best of \acs{os}, programming languages, runtimes and libraries.
+
+As long as each micro-service exposes a well-defined interface that is consistent with others, as
+argued in Section \ref{sec:architecture-proposal-microservices-commandments-6}, it can be implemented
+using the most optimal technology stack.
+
+\subsubsection*[Commandment 10]{Maintain independent revisions and build environments}
+\label{sec:architecture-proposal-microservices-commandments-10}
+Another benefit of micro-services is the ability to code and maintain each service independently.
+
+Though each micro-service is part of a large, composite application, from a developer standpoint, it
+is important to treat each service as an independent unit of code. Each service needs to be versioned
+and maintained separately in the source code control system. This makes it possible to deploy newer
+versions of services without disrupting the application. \ac{cicd} pipelines should be designed to
+take advantage of the independent versioning.
+
+This mechanism makes it possible to implement blue/green testing of each service before deploy it to
+production environment.
