@@ -37,8 +37,8 @@ elementary components.
 \subsection{Characteristics}
 \label{sec:architecture-soa-characteristics}
 \ac{soa} abstraction is not related to any specific technology, but it simply defines some properties 
-that are oriented to \keyword{reuse} and the \keyword{integration} in a heterogeneous environments of its
-base components.
+that are oriented to the \keyword{reuse} and to the \keyword{integration} in a heterogeneous environments
+of its base components.
 
 In particular, each service must have the following properties (illustrated in Figure 
 \ref{img:architecture-soa-characteristics}):
@@ -61,7 +61,7 @@ In particular, each service must have the following properties (illustrated in F
 	\item{\keyword{service statelessness}: the services minimize the resource consumption and delegate
 		the status information management when necessary;}
 	\item{\keyword{service composability}: in a \ac{soa} architecture the applications are the result of
-		the composition of many services. This is the reason that lead us to build independent services
+		the composition of many services. This is the reason that leads us to build independent services
 		in order to obtain the maximum re-usability. The creation of applications or more complex
 		services through composability is defined as \keyword{service orchestration}.}
 \end{itemize}
@@ -93,18 +93,18 @@ will made a request to the registry to know the necessary information in order t
 	\label{img:architecture-soa-workmodel}
 \end{figure}
 
-All the interactions pass through network, which in a real scenario can be both Internet or a Intranet.
+All the interactions pass through network, which in a real scenario can be either Internet or a Intranet.
 \ac{soa} defines the characteristics that the system components must have in order to
 define the last one as a service-oriented architecture.
 
 \subsection{Compatibility with cloud computing}
 \label{sec:architecture-soa-compatibility}
-\ac{soa} architecture is born in a pre-cloud era, thus it is not conceived to address cloud computing
+\ac{soa} architecture is born in the pre-cloud era, thus it is not conceived to address cloud computing
 issues. But \ac{caa} and \ac{soa} share some characteristics that bring us to consider \ac{soa}'s base
 philosophy while building our architecture.
 
 First, both emphasize the \keyword{service concept}. By definition, a service is made up by smaller parts
-that do the job to build the final output, all use the \keyword{delegation} system. With that methodology,
+that do the job to build the final output, everyone use the \keyword{delegation} system. With that methodology,
 people can use the services without worrying about their implementation details and scalability. Most
 important, services can be shared by multiple applications and users, thus optimizing resource consumption.
 
@@ -112,7 +112,7 @@ Second, both promote the \keyword{loose} coupling concept principle. Each archit
 dependencies among different parts of the system. As a result, any single change on one part of the system
 has limited impact on the overall system.
 
-Since, \ac{soa} is born in a pre-cloud era it presents some differences that bring us to reconsider its
+Since \ac{soa} is born in the pre-cloud era it presents some differences that bring us to reconsider its
 base philosophy before starting its adoption inside the cloud model. Both differ in term of
 \keyword{horizontal and vertical services} and \keyword{applications vs. infrastructure}.
 
@@ -127,10 +127,16 @@ the \ac{soa} applications. More often than not, we start with a business problem
 services. These services can be re-used by other applications in the future. Instead cloud computing is for
 \acs{it} delivery, so the dividing of different services is based on their roles in a software stack that is
 mostly well defined. We do not need a problem before defining the cloud services. Services can be easily
-re-used by all applications.
+re-used by every applications.
 
-In conclusion, \ac{soa} and cloud computing share many common principles, but also differ significantly in
-their role in \acs{it} architecture. \ac{soa} is mainly an application architecture with horizontal services;
-while cloud computing is an \acs{it} architecture with vertical services. In following section we will explain
-a possible re-visitation of the \ac{soa}'s base principle making it more suitable with the cloud computing
-definition.
+In conclusion, \ac{soa} and cloud computing share many common principles, but also differ significantly
+in their role in \acs{it} architecture. \ac{soa} is mainly an application architecture with horizontal
+services; while cloud computing is an \acs{it} architecture with vertical services. \ac{soa} played an
+important role in cloud computing foundation. The service orientation paradigm supplies the \ac{saas}
+provider with the necessary support for the implementation of interoperable services which can be flexibly
+distributed and scaled as needed. The \ac{soa} concept allows cloud providers to adapt more quickly to
+challenges of business. On the other hand, cloud computing is about providing ease of access to and usage of
+services \cite{zuccato2014implementing}.
+
+In following section we will explain a possible re-visitation of the \ac{soa}'s base principle making it more
+suitable with the cloud computing definition.

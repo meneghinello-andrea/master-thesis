@@ -217,3 +217,25 @@ take advantage of the independent versioning.
 
 This mechanism makes it possible to implement blue/green testing of each service before deploy it to
 production environment.
+
+\subsection{Multi-tenancy}
+\label{sec:architecture-proposal-multiTenancy}
+As we argued in Section \ref{sec:elasticity-multiTenancy} with good elasticity mechanisms developers
+are able to provide, to end-users and companies, multi-tenant applications or services.
+
+Given our decision to adopt the containerization as a base to support our architecture, and having 
+understood the concepts illustrated in Section \ref{sec:architecture-proposal-microservices-commandments}
+we focus our attention in building stateless micro-services because they are easily shareable between
+different tenants.
+
+This type of micro-services have to contains the business logic of our application or service. Business logic
+is equal between all tenants because there is not the presence of proprietary or sensible information\footnote{
+As we will see the business logic must process some meta-information that permit to distinguish different
+tenants.}. As a consequence there is the need of lower instance to support all tenants instead having
+a replica of the service or application for each end-user.
+
+The vertical separation, needed to maintain divided each tenant, must be managed in micro-services who
+manage the persistence layer. In the following section we will introduce three possible technique to manage
+multi-tenancy in those micro-services (stateful).
+
+\subsubsection{title}
