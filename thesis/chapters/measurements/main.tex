@@ -8,22 +8,40 @@
 %	Table of changes:
 %		21/03/2016 -> document definition
 %---------------------------------------------------------------------------------------------------
-\chapter{Measurements}
+\chapter{Comparative evaluation}
 \label{cap:measurements}
-In order to offer high level of service a \ac{paas} provider must install, on its physical systems,
-a virtualization layer that is able to exploit the underlying hardware as better as it can. Is not
-sufficient that the layer virtualize the fundamental assets (see Section
-\ref{sec:background-virtualization-assets}), it must contain also a good resource scheduler. It should
-be able to schedule the different workloads in devices that have hardware resources conform with the
-current workload in order to assure elasticity.
+As we argued in Chapter \ref{cap:elasticity} good elasticity mechanisms are needed to build a multi-tenant
+software deployed in the cloud. These mechanisms, most of times, are based on threshold
+evaluation (reactive mechanism) which move the work environments to a more powerful server in order
+to support the current workload when the latter increases.
 
-In this chapter we want to try to isolate and understand the overhead introduced by \ac{vm}s
-(specifically \ac{kvm}) and containers (specifically Docker). The fact that Linux is able to host
-both \ac{vm}s and Docker containers creates the opportunity for an apple-to-apple comparison between
-these two virtualization technologies.
+Our purpose is to prove that the Docker technology is able to better exploit the underlying hardware
+capabilities, thus reducing the necessary relocations. We focused our attention on three axes: \acs{cpu},
+storage and network.
 
-Thus, in the following sections we report the results collected during the comparison tests. Each 
-section illustrate the purpose of the test, illustrate the collected results and try to explain them.
+By analysing the \acs{cpu} capacity we have tested how both environments are able to scale-in/scale-out
+when they have to share computing resources with other intensive compute activities. Thus, we have proved
+their adaptability, which is one of the requirements to gain elasticity (see Section 
+\ref{sec:elasticity-requirements-adaptability}).
+
+Instead, analysing the sustainable memory bandwidth we wanted to prove how containerization and virtualization
+are able to exploit the available memory bandwidth; a good exploitation would reduce considerably the
+number of scale-in/scale-out operations (i.e. scalability requirement described in Section 
+\ref{sec:elasticity-requirements-scalability}). This would improve the scalability performance because
+our service resides for a lot of time over the same machine (with more available memory or less active
+users), before scaling to a better one, thus users do not wait for trade-off times.
+
+Finally, through analysing network capabilities (bandwidth and latency) of both containerization and
+virtualization technologies, we are able to know how the general performance increases or decreases
+following a scale operation. Actually, composability (see Section 
+\ref{sec:elasticity-requirements-composability}) is a requirement for elasticity as well as \ac{sla} 
+awareness (see Section \ref{sec:elasticity-requirements-slaAwareness}). Measuring network bandwidth
+and latency give us an idea about what \ac{sla} have to take into account to assure good \ac{qos}.
+
+The fact that Linux is able to host both \ac{vm}s and Docker containers creates the opportunity for
+an apple-to-apple comparison between these two virtualization technologies. Thus, in the following 
+sections we report the results collected during the comparison tests. Each section illustrates the
+purpose of the test, the collected results and tries to explain them.
 
 \input{chapters/measurements/sections/introduction.tex}
 
