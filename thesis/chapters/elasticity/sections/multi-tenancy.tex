@@ -11,7 +11,7 @@
 \section{Multi-tenancy}
 \label{sec:elasticity-multiTenancy}
 \keyword{Multi-tenancy} refers to a software's architecture principle (or hardware) on which a single instance
-of an application is executed inside one (or more) server(s), offering its service to many clients (tenant)
+of an application is executed inside one (or more) server(s), offering its service to many clients (tenants)
 at the same time. The concept must not be confused with the one of multi-instance architecture. The last one
 occurs when multiple separated instances (or hardware systems) are made available to different
 organizations. Instead, in a multi-tenant architecture the applications are designed to partition 
@@ -41,10 +41,10 @@ Amazon relies on a hypervisor to provide isolation between different tenants (to
 Saleforce.com is based on a query re-writer to achieve the same property.
 
 Multi-tenant software is desirable for software-houses because they can satisfy the needs of different
-companies that share a common scenario with one deployed single instance and save money due to a
-reduction of the number of necessary deployed instances. 
+companies that share a common scenario with one deployed instance and save money due to a reduction
+of the number of necessary deployed instances. 
 
-Software-houses do not know a priori the exact number of tenant that will use the application or service,
+Software-houses do not know a priori the exact number of tenant that will use their applications or services,
 hence they require that the \ac{paas} vendor provides them \keyword{good elasticity mechanisms} to be used
 with \keyword{elastic software architectures}.
 
@@ -61,10 +61,11 @@ requirements:
 		situation cannot happen\footnote{This property can be proved through unit-testing activities that have the
 		aim to discover such security lack.};}
 	\item{\keyword{guarantee of service}: activities of different tenants must be isolated form each other and it
-		is necessary guaranteeing optimal performance both in normal condition, and when some errors occur or workload
-		changes;}
+		is necessary guaranteeing optimal performance both in normal condition, and when some errors occur or in
+		presence of workload changes;}
 	\item{\keyword{management}: it is essential that software-houses are able to monitor and execute the
-		provisioning of all necessary resources in a rapid way in order to maintain the promised service levels.}
+		provisioning of all necessary resources in a rapid way in order to maintain the promised service levels
+		described in the \ac{sla}.}
 \end{itemize}
 
 \subsection{Limits}
@@ -78,9 +79,9 @@ some risks:
 		observe privacy laws; they vary a lot from state to state. In many cases cloud-applications are
 		executed in different data-centre to avoid a decline of the offered service, or to prevent a
 		possible absence of the offered service. Privacy problems can lead developers in avoiding this paradigm;}
-	\item{\keyword{bare security}: if the software is not build and properly tested, it may happen that a
+	\item{\keyword{bare security}: if the software is not built and properly tested, it may happen that a
 		company may be able to access to data or configurations of other companies; Companies will not migrate to
-		our solution if we are not be able to assure that their data are safely safeguard;}
+		our solution if we are not be able to assure that their data are safely safeguarded;}
 	\item{\keyword{offered power}: the different companies that benefit of the service may affirm that
 		the service is not able to support their workload. \ac{paas} provider, as we just argued, must offer
 		good elasticity mechanisms that must be well exploited by the software architecture;}

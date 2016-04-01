@@ -70,7 +70,7 @@ needs to be considered in the first two stages.
 
 \begin{figure}
 	\centering{}
-	\includegraphics[width=0.5\textwidth]{chapters/elasticity/images/autonomy.png}
+	\includegraphics[width=0.4\textwidth]{chapters/elasticity/images/autonomy.png}
 	\caption[Major-loop for autonomy]{Major-loop to implement the autonomy requirement.}
 	\label{img:elasticity-requirements-autonomy}
 \end{figure}
@@ -125,8 +125,8 @@ opposite scenario.
 \end{figure}
 
 When the underlying infrastructure does not allow \ac{vm} redimensioning, vertical scalability may be
-implemented migrating the server instances from their current \ac{vm} to another more powerful one in a 
-different host. Depending on the size of the instance image, the network bandwidth and the location of
+implemented migrating the \ac{vm} instances from their current server to another more powerful one.
+Depending on the size of the instance image, the network bandwidth and the location of
 the host computers, migration may need a long time to be concluded (several seconds). Migration is a
 three step procedure:
 
@@ -159,8 +159,8 @@ Adaptability as two different dimensions:
 		both scalable and adapting, focusing that adaptability on the tools needed for guaranteeing the
 		scalability \ac{qos};}
 	\item{\keyword{adaptivity}: it is the system's ability to adapt itself. An adaptive system is able
-		to find out when adapting actions should be applied. This means that adaptable system becomes
-		adaptive when it is able to provide an autonomous management. Since autonomy is one of the
+		to find out when adapting actions should be applied. This means that adaptable systems become
+		adaptive when they are able to provide an autonomous management. Since autonomy is one of the
 		elasticity requirements, elastic systems need to be adaptive. To this end, their architecture
 		should include monitoring, analysis, planning and execution subsystems that automate all
 		reconfiguration-related decisions.}
@@ -183,9 +183,9 @@ adapting actions are started.
 	\centering{}
 	\includegraphics[width=0.7\textwidth]{chapters/elasticity/images/adaptability.png}
 	\caption[Different adaptability approaches]{The figure illustrate different adaptability approaches
-		that a \ac{paas} vendor can adopt to manage the elasticity. If it choose a reactive approach the
-		system adapt themselves after the workload change happens; instead if it choose a proactive approach
-		it prefer to react close as possible to the workload change; finally if it choose a predictive
+		that a \ac{paas} vendor can adopt to manage the elasticity. If it chooses a reactive approach the
+		system adapts themselves after the workload change happens; instead if it chooses a proactive approach
+		it prefers to react close as possible to the workload change; finally if it chooses a predictive
 		approach it attempts to predict future workload changes.}
 	\label{img:elasticity-requirements-adaptability}
 \end{figure}
@@ -237,7 +237,7 @@ performance prediction model may be used to identify those components that are c
 point, applying then the most appropriate scaling actions on them. These components are replicated in
 the regular case and define elements that are smaller than in monolithic designs.
 
-Service composability has other implications, too (shown in Figure \ref{img:elasticity-requirements-composability}).
+Service composability has other implications too (shown in Figure \ref{img:elasticity-requirements-composability}).
 It is able to provide reusable components that might have been already deployed among our \ac{paas} service provider
 or among a third party one. Inter-service dependencies should be declared in the deployment descriptors and the
 \ac{sla}s of those external services should be analysed in order to establish the \ac{sla} of such global service.
@@ -263,9 +263,9 @@ runs their services. A careful software upgrading procedure should be designed t
 the term of the service's \ac{sla}, which in many cases will require some degree of service continuity
 and availability.
 
-\citeauthor{li2011evaluating} in \cite{li2011evaluating} a possible set of principles and mechanisms to
-consider in software upgrades taking into account defined \ac{sla}s. They must be followed in the given
-sequence, and they are:
+\citeauthor{li2011evaluating} in \cite{li2011evaluating} provide a possible set of principles and mechanisms
+that have to be considered in software upgrades taking into account defined \ac{sla}s. They must be followed
+in the given sequence, and they are:
 
 \begin{enumerate}
 	\item{\keyword{global consistency}: the updating actions should be applied without aborting any started
