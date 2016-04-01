@@ -36,7 +36,7 @@ time to spend searching clothes suitable with their work activities.
 The company was born with the idea that offering this kind of service at home was a great facilitator,
 and for many years it has been a success factor. This was motivated because customers, like lawyers or
 accountants and other have found this service very useful and fair with their return back (high-quality
-products and high-level of service).
+products and high-level of services).
 
 Given the presence of itinerant agents, who have to know a certain amount of data (physical measures,
 previous purchases, proposal that they joined, biographical data, etc.) in order to satisfy the customer
@@ -45,12 +45,12 @@ needs, the request to access to that data everywhere and with any type of device
 In addition, the company saw in the recent years the growth of different competitors, that started to offer
 about the same service. Therefore it started to think to differentiate its business starting a production
 a service that permit to the itinerant agents to have access to those data everywhere and with any type
-of device.
+of device. Its idea is making this service available to competitor companies for remuneration.
 
 The typical request made by those companies are the following:
 
 \begin{itemize}
-	\item{manage biographical data of their customers;}
+	\item{manage data of their customers (biographical, physical measures, purchases, etc.);}
 	\item{manage purchase data;}
 	\item{be visible on the web (having a web-site that describe the company);}
 	\item{possibility to sell their product through a web-site;}
@@ -61,13 +61,13 @@ The typical request made by those companies are the following:
 The author thought to exploit the opportunity of the thesis period to learn a technologies and architectural
 patterns that are able to facilitate the construction and the maintenance of an elastic and multi-tenant
 service. In the following section we will briefly introduce the designed architecture and we will explain
-its major components and how, through these it is able to reach the elasticity requirement illustrated in
+its major components and how, through these, it will be able to reach the elasticity requirement illustrated in
 Section \ref{sec:elasticity-requirements}.
 
 \subsection{Proposed architecture}
-\label{sec:architecture-propoasal-architecture}
+\label{sec:architecture-proposal-architecture}
 After reading the comparison evaluations illustrated in Chapter \ref{cap:measurements} and the concepts
-discussed in Section \ref{sec:architecture-soaRevisitation} and we are now able to understand the proposed
+discussed in Section \ref{sec:architecture-soaRevisitation} we are now able to understand the proposed
 architecture based on Docker containers. Figure \ref{img:architecture-proposal-architecture} illustrate an
 overview of the proposal, that we are able to define as:
 
@@ -92,12 +92,12 @@ As we can see from the diagram, the architecture is composed by two different ty
 	\item{\keyword{private}: nodes that are only able to communicate with other nodes inside
 		the same network;}
 	\item{\keyword{public}: it is able to communicate with other nodes inside the same network
-		and also accept incoming communication coming from Internet.}
+		and also accept incoming communications coming from Internet.}
 \end{itemize}
 
 A key component of our architecture is the \keyword{seeker server}. This is the key component that will
-be able to manage all the elasticity requirements, we call it project ``ingress''. We will now describe
-it.
+be able to manage all the elasticity requirements. We call it \keyword{project ``ingress''} and will
+describe it in the next Section.
 
 \subsubsection{Ingress project}
 \label{sec:architecture-proposal-architecture-ingress}
@@ -125,16 +125,16 @@ Its main characteristics are:
 This component will encapsulate a properly designed algorithm that on the basis of the actual workload
 will be able to scale-in/out the necessary micro-services contained inside the private nodes (see Figure
 \ref{img:architecture-proposal-architecture}). This algorithm will be based on the 
-``monitor-analyse-plan-execute'' major cycle described in Section \ref{sec:elasticity-requirements-autonomy}.
+``monitor-analyse-plan-execute'' major-cycle described in Section \ref{sec:elasticity-requirements-autonomy}.
 
 Thanks to the increasing inclusion of the Docker \acs{api} inside the modern programming languages, will be
 quite easy for this component to manage containers' life-cycle in order to replicate/close them when necessary.
-Through managing containers' life-cycle we are able to scale our service and adapt it to current workloads
+Through managing containers' life-cycle we are able to scale our service and adapt it to current workloads.
 
 Another key point is in having a ``\keyword{filter battery}'' capable to ``\keyword{execute actions}'' on the
 incoming requests if pre-determined criteria are satisfied. Figure 
 \ref{img:architecture-proposal-architecture-ingress} shows a diagram that illustrate how each incoming request
-will be manage before and after it reaches the service.
+will be managed before and after it reaches the service.
 
 \begin{figure}
 	\centering{}
@@ -153,11 +153,11 @@ The filter main characteristics are:
 			and authorization checks;}
 		\item{ROUTING: decide to which micro-service route the incoming request, if the preceding
 			checks performed successfully;}
-		\item{POST: after the request reaches the micro-service, here we are to format the response
+		\item{POST: after the request reaches the micro-service, here we are able to format the response
 			before send it to the client;}
 		\item{ERROR: in case a micro-service respond with an error code.}
 	\end{itemize}
-	\item{\keyword{order}: determine on which order filter on the same level will executed;}
+	\item{\keyword{order}: determine on which order filter on the same level will be executed;}
 	\item{\keyword{criteria}: the criteria that must be satisfied in order to apply the current filter;}
 	\item{\keyword{action}: the associated action to the filter, executed only if the criteria results
 		satisfied.}
@@ -176,7 +176,7 @@ containers inside the same host linked together with the ``link'' capabilities p
 
 Creating a \ac{vpn}, as shown in Figure \ref{img:architecture-proposal-architecture}, with the
 micro-services also increases the security performance because the exact network and micro-service
-configuration will be hide to the outside world.To increase further the security performance we must
+configuration will be hidden to the outside world. To increase further the security performance we must
 pay attention in creating connections only with the ``seeker'' node  or with nodes inside the same
 \ac{vpn} (avoid connection over Internet as much as possible).
 
@@ -206,7 +206,7 @@ which supervise the persistence layer (the ``File Server'' in Figure
 
 \begin{itemize}
 	\item{\keyword{different database file}: each tenants access to a proprietary database file. This solution
-		allow an easy schema customization and an high data separation that lead tenant to high level of security;}
+		allow an easy schema customization and an high data separation that lead tenants to high level of security;}
 	\item{\keyword{single database file multiple schemas}: each tenants access to same database file but access
 		only to the associated schema; also in this scenario it is possible to easily customize the tenant's schema.
 		In this scenario is more complicated restore data after a disaster because in the same file reside data of
@@ -218,9 +218,9 @@ which supervise the persistence layer (the ``File Server'' in Figure
 		data are mixed together.}
 \end{itemize}
 
-As we just argued each one of the above techniques comes with its pro and cons. The architecture
-proposed in Section \ref{sec:architecture-propoasal-architecture} can adopt each one of these
-techniques. They represents different subscription type that differentiate the offered services.
+As we just argued each one of the above techniques comes with its pro \& cons. The architecture
+proposed in Section \ref{sec:architecture-proposal-architecture} can adopt each one of these
+techniques. They represents different subscription types that differentiate the offered services.
 
 Finally, to increase the overall performance will be possible to manage the Docker data-volumes
 (see Section \ref{sec:background-deployments-docker-dataManagement}) through Flocker \cite{flockerHomepage}.
@@ -228,10 +228,10 @@ Flocker, shown in Figure \ref{img:architecture-proposal-architecture-multiTenanc
 ops-teams the tools they need to run containerized stateful services (like databases) in production
 environments. Unlike a Docker data-volume which is tied to a single server, a Flocker data-volume,
 called a dataset, is portable and can be used with any container in your cluster. Flocker manages Docker
-containers and data-volumes together. When developers use Flocker to manage their stateful micro-service,
+containers and data-volumes together. When developers use Flocker to manage their stateful micro-services,
 their volumes will follow the containers when they move between different hosts in the cluster.
 
-\begin{figure}
+\begin{figure}[h!]
 	\centering{}
 	\includegraphics[width=0.6\textwidth]{chapters/architecture/images/flocker.png}
 	\caption[Flocker capabilities]{When containers moves, data-volumes moves with it \cite{flockerHomepage}.}
@@ -247,7 +247,7 @@ to analyse the potentiality of the \ac{paas} layer.
 The work done in the preceding thesis differs from our because they provide a framework that is able
 to deploy an application or a service over differ \ac{iaas} cloud providers. Instead in our proposal
 we have to base our service or application inside a \ac{paas} that offers Docker containers, like
-Docker data centre (see Section \ref{sec:background-paas-platforms}).
+Docker data-centre (see Section \ref{sec:background-paas-platforms}).
 
 \begin{figure}
 	\centering{}
@@ -256,7 +256,7 @@ Docker data centre (see Section \ref{sec:background-paas-platforms}).
 	\label{img:architecture-proposal-related}
 \end{figure}
 
-In Figure \ref{img:architecture-proposal-related} we can see a high level overview of the \ac{paas}\ac{soa}
-framework. \ac{soa}Boot agent are responsible for the deploying of a services inside a \ac{iaas} provider,
-be it made by \ac{vm}, container or physical machines. It create a sort layer that is platform
+In Figure \ref{img:architecture-proposal-related} we can see a high-level overview of the \ac{paas}\ac{soa}
+framework. \ac{soa}Boot agents are responsible for the deploying of a services inside a \ac{iaas} provider,
+be it made by \ac{vm}s, containers or physical machines. It create a sort layer that is platform
 independent.

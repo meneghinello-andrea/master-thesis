@@ -10,7 +10,7 @@
 %---------------------------------------------------------------------------------------------------
 \section{\acs{soa} re-visitation}
 \label{sec:architecture-soaRevisitation}
-In the following section we want to review the \ac{soa} architecture in order to exploit its main
+In the following Sections we want to review the \ac{soa} architecture in order to exploit its main
 characteristics. We will use the re-visitation later in our architecture in order to provide an
 elastic and multi-tenant architecture deployable in the \ac{paas}.
 
@@ -53,7 +53,7 @@ In particular, each service must have the following properties (illustrated in F
 		by other making the system flexible and easily customizable;}
 	\item{\keyword{service reusability}: each service must be made available on the network through
 		the publication of its interface and made accessible in a transparent way (location awareness);}
-	\item{\keyword{service statelessness}: the services minimize the resource consumption and delegate
+	\item{\keyword{service statelessness}: services minimize the resource consumption and delegate
 		the status information management when necessary;}
 	\item{\keyword{service composability}: in a \ac{soa} architecture the applications are the result of
 		the composition of many services. This is the reason that leads us to build independent services
@@ -63,7 +63,7 @@ In particular, each service must have the following properties (illustrated in F
 
 \begin{figure}
 	\centering{}
-	\includegraphics[width=0.7\textwidth]{chapters/architecture/images/soa-characteristics.png}
+	\includegraphics[width=0.8\textwidth]{chapters/architecture/images/soa-characteristics.png}
 	\caption[Service oriented logic]{Service oriented logic \cite{serviceCharacteristics}.}
 	\label{img:architecture-soaRevisitation-characteristics}
 \end{figure}
@@ -75,7 +75,7 @@ issues. But \ac{caa} and \ac{soa} share some characteristics that bring us to co
 philosophy while building our architecture.
 
 First, both emphasize the \keyword{service concept}. By definition, a service is made up by smaller parts
-that do the job to build the final output, everyone use the \keyword{delegation} system. With that methodology,
+that do the job to build the final output, everyone using the \keyword{delegation} system. With that methodology,
 people can use the services without worrying about their implementation details and their scalability. In
 addiction, services can be shared by multiple applications and users, thus optimizing resource consumption,
 and enabling the concept of multi-tenancy (see Section \ref{sec:elasticity-multiTenancy})
@@ -105,7 +105,7 @@ re-used by every applications.
 In conclusion, \ac{soa} and cloud computing share many common principles, but also differ significantly
 in their role in \acs{it} architecture. \ac{soa} is mainly an application architecture with horizontal
 services; while cloud computing is an \acs{it} architecture with vertical services. The service orientation
-paradigm supplies the \ac{saas} provider with the necessary support for the implementation of interoperable 
+paradigm supplies the \ac{saas} providers with the necessary support for the implementation of interoperable 
 services but they can not be scaled as fast as needed because of their monolithic nature. Our proposal is
 to cover this lack with the adoption of the subset of \ac{soa} called micro-service pattern.
 
@@ -167,16 +167,16 @@ so-called ``ten commandments'' of a micro-services architecture. They are:
 
 \begin{enumerate}
 	\item{\keyword{clean separation of stateless and stateful services}: having a clear separation from
-		stateless and stateful services allow developers to easily share the micro-services between
-		different tenants; later in Section REF we will discuss how it is possible to manage multi-tenancy
-		in stateful services;}
+		stateless and stateful services allow the developers to easily share the micro-services between
+		different tenants; later in Section \ref{sec:architecture-propoasal-architecture-multiTenancy}
+		we will discuss how it is possible to manage multi-tenancy in stateful services;}
 	\item{\keyword{do not share libraries or \ac{sdk}}: heaving no shared libraries or \ac{sdk} between
 		micro-services permit to developers to adopt the \ac{cicd} pipeline during development phases;}
 	\item{\keyword{avoid host affinity}: no assumption have to be made on where our micro-services will
 		be executed; this increase the portability of our micro-services;}
 	\item{\keyword{focus on services with one task in mind}: building highly specialized micro-services
 		increase their re-usability; furthermore scarcely the size of each micro-service will be big, so
-		guarantee the elasticity become more easier;}
+		guarantee the elasticity becomes more easier;}
 	\item{\keyword{use lightweight messaging protocol for communication}: micro-services have to be
 		designed in order to be highly collaborative, so a critical aspect lies in the creation of
 		communication protocols. These protocol must be as easy as possible and to avoid possible lock 
@@ -189,8 +189,8 @@ so-called ``ten commandments'' of a micro-services architecture. They are:
 		the code;}
 	\item{\keyword{implement a self-registration and discovery mechanism}: to rich high level of
 		automation it is necessary to introduce the presence of a central authority (a registry) that
-		contains all active services in order that other are able to find them; therefore it is necessary
-		introduce in the service life-cycle mechanism that permit the subscribe and unsubscribe of
+		contains all active services in order that other are able to find them; therefore it is necessary to
+		introduce in the service life-cycle a mechanism that permit the subscribe and unsubscribe of
 		the service from the registry;}
 	\item{\keyword{explicitly check for rules and constraints}: in order to guarantee high \ac{qos}
 		levels sometimes our services have to be supported by constraints (e.g. execute in systems with

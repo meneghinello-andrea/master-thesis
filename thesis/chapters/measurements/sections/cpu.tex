@@ -23,7 +23,7 @@ machine and then in various interesting environments, including:
 \end{enumerate}
 
 Even if running a container inside a \ac{vm} creates a double layer of virtualization, we also evaluated
-these scenarios (2,3,4,5) because this is the only available solution if we choose a \ac{iaas} (like 
+these scenarios (4 and 5) because this is the only available solution if we choose a \ac{iaas} (like 
 \ac{aws}) instead a \ac{paas} provider.
 
 The \acs{cpu} tests were performed twice. The first time they where executed in complete isolation
@@ -34,7 +34,7 @@ when they need to share the underlying hardware resources.
 
 \subsection{Hyper-Threading Technology}
 \label{sec:measurements-cpu-hyperThreadingTechnology}
-Hyper-Threading (officially called Hyper-Threading Technology) is Intel's proprietary simultaneous
+Hyper-Threading (officially called Intel Hyper-Threading Technology) is Intel's proprietary simultaneous
 multi-threading implementation used to improve parallelization of computations performed on x86
 microprocessors. Figure \ref{img:measurements-cpu-hyperThreading} shows an example of execution with
 Hyper-Threading enabled.
@@ -83,7 +83,7 @@ called Gaussian elimination, but it is significantly improved to increase its nu
 its performance.
 
 Linpack library has largely been replaces by Lapack, which extends and improves upon the routines. In
-Lapack, the routines have been carefully rewritten and tuned to take advantage of processors' cache,
+Lapack, the routines have been carefully re-written and tuned to take advantage of processors' cache,
 available cores and relatively few references actually go to memory. In our tests, we used the
 double-precision \ac{hpl} benchmark provided by Intel.
 
@@ -151,19 +151,19 @@ of that list.
 		\multirow{2}{*}{Test num} &   \multicolumn{5}{c|}{\keyword{\acs{cpu} capacity without contention (\acs{gflops})}}   \\ \cline{2-6}
 		                          & \textit{Min} & \textit{Max} & \textit{Avg} & \textit{Std. Dev.} & \textit{\% upon tot.} \\ \hline
 		\textit{native}           & $286.3051$   & $303.0076$   & $293.1930$   & $6.3289$           & $100.000$             \\ \hline
-		\textit{2}                & $266.4806$   & $306.6239$   & $285.4630$   & $12.8306$          & $97.364$              \\ \hline
-		\textit{3}                & $84.3842$    & $86.4793$    & $85.9023$    & $0.7661$           & $29.299$              \\ \hline
-		\textit{4}                & $94.1811$    & $95.3780$    & $95.0015$    & $0.4321$           & $32.402$              \\ \hline
-		\textit{5}                & $84.2199$    & $88.0320$    & $85.9904$    & $1.3263$           & $29.329$              \\ \hline
-		\textit{6}                & $91.5771$    & $94.2375$    & $93.1346$    & $0.8818$           & $31.766$              \\ \hline\hline
+		\textit{1}                & $266.4806$   & $306.6239$   & $285.4630$   & $12.8306$          & $97.364$              \\ \hline
+		\textit{2}                & $84.3842$    & $86.4793$    & $85.9023$    & $0.7661$           & $29.299$              \\ \hline
+		\textit{3}                & $94.1811$    & $95.3780$    & $95.0015$    & $0.4321$           & $32.402$              \\ \hline
+		\textit{4}                & $84.2199$    & $88.0320$    & $85.9904$    & $1.3263$           & $29.329$              \\ \hline
+		\textit{5}                & $91.5771$    & $94.2375$    & $93.1346$    & $0.8818$           & $31.766$              \\ \hline\hline
 		\multirow{2}{*}{Test num} &    \multicolumn{5}{c|}{\keyword{\acs{cpu} capacity with contention (\acs{gflops})}}     \\ \cline{2-6}
 		                          & \textit{Min} & \textit{Max} & \textit{Avg} & \textit{Std. Dev.} & \textit{\% upon tot.} \\ \hline
 		\textit{native}           & $226.1955$   & $310.3253$   & $262.9988$   & $27.3098$          & $100.000$             \\ \hline
-		\textit{2}                & $239.2409$   & $294.9315$   & $262.7408$   & $18.8278$          & $99.902$              \\ \hline
-		\textit{3}                & $72.9531$    & $85.5957$    & $79.1688$    & $4.4305$           & $30.102$              \\ \hline
-		\textit{4}                & $71.0966$    & $86.6270$    & $82.5354$    & $5.8239$           & $31.382$              \\ \hline
-		\textit{5}                & $76.7307$    & $79.6143$    & $78.2996$    & $1.0309$           & $29.772$              \\ \hline
-		\textit{6}                & $84.4720$    & $91.2945$    & $88.8362$    & $2.2995$           & $33.778$              \\ \hline
+		\textit{1}                & $239.2409$   & $294.9315$   & $262.7408$   & $18.8278$          & $99.902$              \\ \hline
+		\textit{2}                & $72.9531$    & $85.5957$    & $79.1688$    & $4.4305$           & $30.102$              \\ \hline
+		\textit{3}                & $71.0966$    & $86.6270$    & $82.5354$    & $5.8239$           & $31.382$              \\ \hline
+		\textit{4}                & $76.7307$    & $79.6143$    & $78.2996$    & $1.0309$           & $29.772$              \\ \hline
+		\textit{5}                & $84.4720$    & $91.2945$    & $88.8362$    & $2.2995$           & $33.778$              \\ \hline
 	\end{tabular}
 	\captionof{table}{Resume of the \acs{cpu} capacity benchmark.}
 	\label{tbl:measurements-cpu-results-capacity}
@@ -171,7 +171,7 @@ of that list.
 
 \begin{figure}
 	\centering{}
-	\includegraphics[width=0.75\textwidth]{chapters/measurements/images/cpu-capacity.png}
+	\includegraphics[width=0.7\textwidth]{chapters/measurements/images/cpu-capacity.png}
 	\caption[Compute - resume of capacity benchmark]{Resume of \acs{cpu} capacity benchmark.}
 	\label{img:measurements-cpu-results-capacity}
 \end{figure}
@@ -201,32 +201,32 @@ Hyper-Threading Technology produces additional losses in \acs{cpu} capacity. Thu
 cloud provider of disable this feature produce a light increase of the performance.
 
 \begin{center}
-	\captionof{table}{Resume of \acs{cpu} capacity execution time.}
 	\begin{tabular}{| l | r | r | r | r | r |}
 		\hline
 		\multirow{2}{*}{Test num} &               \multicolumn{5}{c|}{\keyword{Time without contention (s)}}                \\ \cline{2-6}
 		                          & \textit{Min} & \textit{Max} & \textit{Avg} & \textit{Std. Dev.} & \textit{\% upon tot.} \\ \hline
 		\textit{native}           & $1\,253.393$ & $1\,326.514$ & $1\,295.949$ & $27.747$           & $100.000$             \\ \hline
-		\textit{2}                & $1\,238.611$ & $1\,425.198$ & $1\,333.098$ & $59.504$           & $102.867$             \\ \hline
-		\textit{3}                & $4\,391.658$ & $4\,500.697$ & $4\,421.514$ & $39.941$           & $341.180$             \\ \hline
-		\textit{4}                & $3\,981.921$ & $4\,032.526$ & $3\,997.138$ & $18.337$           & $308.433$             \\ \hline
-		\textit{5}                & $4\,314.201$ & $4\,509.476$ & $4\,417.676$ & $67.989$           & $340.883$             \\ \hline
-		\textit{6}                & $4\,039.111$ & $4\,147.189$ & $4\,080.002$ & $36.749$           & $314.827$             \\ \hline\hline
+		\textit{1}                & $1\,238.611$ & $1\,425.198$ & $1\,333.098$ & $59.504$           & $102.867$             \\ \hline
+		\textit{2}                & $4\,391.658$ & $4\,500.697$ & $4\,421.514$ & $39.941$           & $341.180$             \\ \hline
+		\textit{3}                & $3\,981.921$ & $4\,032.526$ & $3\,997.138$ & $18.337$           & $308.433$             \\ \hline
+		\textit{4}                & $4\,314.201$ & $4\,509.476$ & $4\,417.676$ & $67.989$           & $340.883$             \\ \hline
+		\textit{5}                & $4\,039.111$ & $4\,147.189$ & $4\,080.002$ & $36.749$           & $314.827$             \\ \hline\hline
 		\multirow{2}{*}{Test num} &                 \multicolumn{5}{c|}{\keyword{Time with contention (s)}}                 \\ \cline{2-6}
 		                          & \textit{Min} & \textit{Max} & \textit{Avg} & \textit{Std. Dev.} & \textit{\% upon tot.} \\ \hline
 		\textit{native}           & $1\,223.837$ & $1\,679.024$ & $1\,459.127$ & $146.186$          & $100.000$             \\ \hline
-		\textit{2}                & $1\,287.715$ & $1\,587.470$ & $1\,452.694$ & $100.854$          & $99.559$              \\ \hline
-		\textit{3}                & $4\,436.996$ & $5\,205.913$ & $4\,770.323$ & $259.307$          & $326.930$             \\ \hline
-		\textit{4}                & $4\,384.173$ & $5\,341.855$ & $4\,773.795$ & $356.586$          & $327.168$             \\ \hline
-		\textit{5}                & $4\,770.345$ & $4\,956.926$ & $4\,870.700$ & $75.448$           & $333.809$             \\ \hline
-		\textit{6}                & $4\,254.526$ & $4\,698.309$ & $4\,396.572$ & $161.418$          & $301.315$             \\ \hline
+		\textit{1}                & $1\,287.715$ & $1\,587.470$ & $1\,452.694$ & $100.854$          & $99.559$              \\ \hline
+		\textit{2}                & $4\,436.996$ & $5\,205.913$ & $4\,770.323$ & $259.307$          & $326.930$             \\ \hline
+		\textit{3}                & $4\,384.173$ & $5\,341.855$ & $4\,773.795$ & $356.586$          & $327.168$             \\ \hline
+		\textit{4}                & $4\,770.345$ & $4\,956.926$ & $4\,870.700$ & $75.448$           & $333.809$             \\ \hline
+		\textit{5}                & $4\,254.526$ & $4\,698.309$ & $4\,396.572$ & $161.418$          & $301.315$             \\ \hline
 	\end{tabular}
+	\captionof{table}{Resume of \acs{cpu} capacity execution time.}
 	\label{tbl:measurements-cpu-results-time}
 \end{center}
 
 \begin{figure}
 	\centering{}
-	\includegraphics[width=0.75\textwidth]{chapters/measurements/images/cpu-time.png}
+	\includegraphics[width=0.7\textwidth]{chapters/measurements/images/cpu-time.png}
 	\caption[Compute - resume of benchmark execution time]{Resume of benchmark execution time.}
 	\label{img:measurements-cpu-results-time}
 \end{figure}

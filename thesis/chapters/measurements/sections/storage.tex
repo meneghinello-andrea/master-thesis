@@ -31,7 +31,7 @@ L3-cache was exceeded.
 \subsection{Stream benchmark}
 \label{sec:measurements-storage-stream}
 The Stream benchmark \cite{streamBenchmark} is a synthetic benchmark program that measures sustainable
-memory bandwidth when performing simple operation on vectors. Performance is dominated by the memory
+memory bandwidth when performing simple operations on vectors. Performance are dominated by the memory
 bandwidth of the system with the working set engineered to be significantly larger than the available
 caches. The main determinants of performance are the bandwidth to main memory, and to a much lesser
 extent, the cost of handling \ac{tlb} misses. The memory access pattern is regular and the hardware
@@ -40,9 +40,9 @@ is therefore gated by memory bandwidth and not by latency.
 
 The intent of Stream is not to suggest that ``real'' applications have no data re-use, but rather to
 decouple the measurement of the memory subsystem from the hypothetical ``peak'' performance of the machine.
-In this respect the test is quite complementary to the Linpack benchmark test, which is typically optimized
-to the point that a very large fraction of full speed is obtained on modern machines, independent of the
-performance of their memory systems.
+In this respect the test is quite complementary to the Linpack benchmark test (see Section
+\ref{sec:measurements-cpu-linpack}), which is typically optimized to the point that a very large fraction
+of full speed is obtained on modern machines, independent of the performance of their memory systems.
 
 The benchmark has four components and each one adds independent information to the final results. They are:
 
@@ -104,6 +104,7 @@ in Figures  \ref{img:measurements-storage-results-l2Time} and \ref{img:measureme
 show the access time to the main memory in both test environments.
 
 \begin{center}
+	\captionof{table}{Resume of benchmark on native}
 	\begin{tabular}{| l | l | r | r | r | r |}
 		\hline
 		\multicolumn{6}{| c |}{\textbf{Native }}                                                                                                                  \\ \hline
@@ -118,11 +119,11 @@ show the access time to the main memory in both test environments.
 		                               & \textit{add}                        & $39\,904.2086$                        & $0.1009$     & $0.1031$     & $0.1013$     \\ \cline{2-6}
 		                               & \textit{triad}                      & $39\,946.1155$                        & $0.1008$     & $0.1031$     & $0.1026$     \\ \hline
 	\end{tabular}
-	\captionof{table}{Resume of benchmark on native}
 	\label{tbl:measurements-storage-results-native}
 \end{center}
 
 \begin{center}
+	\captionof{table}{Resume of benchmark on Docker container}
 	\begin{tabular}{| l | l | r | r | r | r |}
 		\hline
 		\multicolumn{6}{| c |}{\textbf{Docker }}                                                                                                                  \\ \hline
@@ -137,7 +138,7 @@ show the access time to the main memory in both test environments.
 		                               & \textit{add}                        & $39\,856.8392$                        & $0.1010$     & $0.1227$     & $0.1084$     \\ \cline{2-6}
 		                               & \textit{triad}                      & $39\,917.6961$                        & $0.1009$     & $0.1183$     & $0.1183$     \\ \hline
 	\end{tabular}
-	\captionof{table}{Resume of benchmark on Docker container}
+	
 	\label{tbl:measurements-storage-results-docker}
 \end{center}
 
@@ -188,7 +189,7 @@ hypervisor.
 
 \begin{figure}
 	\centering{}
-	\includegraphics[width=0.8\textwidth]{chapters/measurements/images/storage-l3-capacity.png}
+	\includegraphics[width=0.7\textwidth]{chapters/measurements/images/storage-l3-capacity.png}
 	\caption[Storage - overflow L3 cache]{Resume of benchmark when the L3 cache is exceeded}
 	\label{img:measurements-storage-results-l3Capacity}
 \end{figure}
@@ -199,7 +200,7 @@ scenario we have demonstrated that the \acs{os}-level virtualization layer is no
 
 \begin{figure}
 	\centering{}
-	\includegraphics[width=0.8\textwidth]{chapters/measurements/images/storage-l3-time.png}
+	\includegraphics[width=0.7\textwidth]{chapters/measurements/images/storage-l3-time.png}
 	\caption[Storage - access time L2 cache exceeded]{Resume of memory access time when the L2
 		cache is exceeded.}
 	\label{img:measurements-storage-results-l3Time}
@@ -212,14 +213,14 @@ imputable to the position of data in the caches associated to each core.
 
 \begin{figure}
 	\centering{}
-	\includegraphics[width=0.8\textwidth]{chapters/measurements/images/storage-l2-capacity.png}
+	\includegraphics[width=0.7\textwidth]{chapters/measurements/images/storage-l2-capacity.png}
 	\caption[Storage - overflow L2 cache]{Resume of benchmark when the L2 cache is exceeded}
 	\label{img:measurements-storage-results-l2Capacity}
 \end{figure}
 
 \begin{figure}
 	\centering{}
-	\includegraphics[width=0.8\textwidth]{chapters/measurements/images/storage-l2-time.png}
+	\includegraphics[width=0.7\textwidth]{chapters/measurements/images/storage-l2-time.png}
 	\caption[Storage - access time L2 cache exceeded]{Resume of memory access time when the L2
 		cache is exceeded.}
 	\label{img:measurements-storage-results-l2Time}
