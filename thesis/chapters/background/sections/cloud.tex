@@ -49,15 +49,15 @@ The most comprehensive definition of what cloud computing is comes from \ac{nist
 	\end{quote}
 \end{center}
 
-In the following Sections we will show, in details, the benefits of its adoption, presenting its main
-characteristics.
+In the following Sections we will show, in details, the benefits of its adoption, presenting also its
+main characteristics.
 
 \subsection{Moving from platform ownership to platform management}
 \label{sec:background-cloudComputing-capexOpex}
 When companies decide to design, and consequently build, a new software service they have to plan how
 many resources (compute capacity, storage and networking) making available in order to respect the defined
-\ac{sla}. Developers have to build, over the provisioned resources, the working environment to build
-and support the application.
+\ac{sla}. Developers have to build, over the provisioned resources, the working environments to build
+and support the applications.
 
 This leads to predict the worst possible cases and to invest in resources that permit to cope this
 situation as well as find a business grow model that maintains enough availability without weighing
@@ -68,7 +68,7 @@ management. The cited business model is known with the name of \keyword{\ac{cape
 
 Opposite to the \ac{capex} business model there is the \keyword{\ac{opex}}. This is more flexible
 because it does not require to invest in capital ownership (hardware and time to build the work
-environment) but instead in renting both the desired amount of resources and the ready-to-use work
+environments) but instead in renting both the desired amount of resources and the ready-to-use work
 environments and simply release them when they are no more necessary. This model, if correctly applied,
 permits a cost reduction; Figure \ref{img:background-capexOpex-model} shows a chart which compares
 both models. We can also see that there will be a moment (in the adoption of \ac{capex} one) on which
@@ -91,11 +91,11 @@ The most famous product of Zynga is \textit{Farmville}. It was released in 2009 
 short period, very popular between Facebook users (it reached 10 million of active users in less than
 6 weeks). Initially the service was hosted inside the Amazon infrastructure but two years later his
 \acs{ceo}, Frank D. Gibeau, decided to invest \textdollar{}100 million to build a proprietary data-centre
-to host the service assuming to obtain a long term cost reduction. In Figure
+to host the service assuming to obtain, in a long term, a cost reduction. In Figure
 \ref{img:background-capexOpex-zyngaCase} we can see the trend of \ac{mau} of Farmville application
 in the months that follow the opening of new data-centre. It is possible to observe that \ac{mau} reached
 its peak in 2012 (when the new centre became operative) but in the following two years this value had
-been divided by three (as the new infrastructure demanded), leading to consistent economic losses.
+been divided by three (as the infrastructure demanded), leading to consistent economic losses.
 Thus the society has decided to return basing its service on the Amazon Infrastructure.
 
 \begin{figure}
@@ -103,7 +103,7 @@ Thus the society has decided to return basing its service on the Amazon Infrastr
 	\includegraphics[width=0.6\textwidth]{chapters/background/images/zynga-case.png}
 	\caption[\acs{mau} of Farmville application after 2012]{\acf{mau} of the Farmville application from
 		2012 when company decide to invest in a proprietary data-centre. We can observe that after two
-		years the users' demand is divided by three as the infrastructure demand \cite{netflixZynga}.}
+		years the users' demand was divided by three as the infrastructure demand \cite{netflixZynga}.}
 	\label{img:background-capexOpex-zyngaCase}
 \end{figure}
 
@@ -129,7 +129,7 @@ to the end-users to be considered a cloud environment:
 	\item{\keyword{rapid elasticity}: refers on the way on which resources can be provisioned and released
 		to maintain the software highly available while keeping the monthly/hour\footnote{Usually we have a
 		monthly rent in case of adoption of \acs{paas} cloud model, instead we have a hour rent if we adopt
-		a \acs{iaas} cloud model. We illustrate the difference in following sections.} rent as low as possible;}
+		a \acs{iaas} cloud model.} rent as low as possible;}
 	\item{\keyword{measured service}: refers on the way on which both the end-user and the cloud provider
 		can measure the resource consumption. This is fundamental for final users to know the total amount of
 		the rent and for cloud provider to keep under control resource consumption and scale them only when
@@ -159,8 +159,8 @@ Nowadays cloud computing makes available many service models (shown in Figure
 	\item{\keyword{\acf{paas}/\ac{caas}}: the capability provided to the end-user is to deploy onto the cloud
 		infrastructure user-created or acquired applications created using programming languages,
 		libraries, services and tools supported by the provider.\footnote{This capability does not preclude
-		use of compatible tools like other sources.} The user does not manage or control the underlying
-		cloud Infrastructure including network, servers, operating systems or storage, but has control
+		the use of compatible tools like other sources.} The user does not manage or control the underlying
+		cloud infrastructure including network, servers, operating systems or storage, but has control
 		over the deployed applications and possibly configuration settings for the application-hosting
 		environment;}
 	\item{\keyword{\acf{iaas}}: the capability provided to the end-user is to provision processing, storage,
@@ -218,8 +218,8 @@ With the adoption of cloud computing, software-houses have isolation between har
 development that makes possible to separate the work of hardware engineers and software developers.
 Now it is possible to maintain the hardware updated without worrying about the software. For example Amazon
 System Engineers can decide to upgrade the storage hardware from the magnetic to solid state technology without
-informing software-houses or users, that have applications deployed on it. On the other hand software-houses
-and users do not need to alter and/or redeploy software after the change occurred. Often these changes are
+informing software-houses or end-users, that have applications deployed on it. On the other hand software-houses
+and users do not need to alter and/or re-deploy software after the change occurred. Often these changes are
 transparent to the final users. 
 
 However the introduction of cloud computing introduces a series of new problems that software developers must

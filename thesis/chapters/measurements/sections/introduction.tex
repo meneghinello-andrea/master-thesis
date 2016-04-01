@@ -12,9 +12,9 @@
 \label{sec:measurements-introduction}
 To measure the overhead we have configured our benchmarks to saturate all the available resources of the
 \acf{sut}. In particular Docker containers were not restricted by cgroups (see Section 
-\ref{sec:background-virtualization-types}) so they could consume the full set of resources of the \ac{sut}.
-Likewise, \ac{vm}s were configured with 16 v\acs{cpu}s and adequate v\acs{ram} to hold the benchmark's
-working sets.
+\ref{sec:background-deployments-virtualization-types}) so they could consume the full set of resources
+of the \ac{sut}. Likewise, \ac{vm}s were configured with 16 v\acs{cpu}s and adequate v\acs{ram} to hold
+the benchmark's working sets.
 
 We used a set of micro-benchmarks to individually measure \acs{cpu}, main memory and network overhead in
 both scenarios. All the tests were performed on two identical server machines, which characteristics
@@ -48,7 +48,7 @@ during test execution.
 	\label{tbl:measurements-introduction-sut}
 \end{center}
 
-\subsection{Execution script}
+\subsection{Execution scripts}
 \label{sec:measurements-introduction-script}
 The very nature of the tests that are been executed bring us to find a way to \keyword{automatize} them
 with the purpose of quicken their execution and reducing the necessary human interaction.

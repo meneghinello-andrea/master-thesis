@@ -12,19 +12,7 @@ PUBLISH_NAME            = Meneghinello.pdf
 
 REPORT_FILE_NAME        = thesis
 
-REPORT_CHAPTERS         = chapters/background/main.tex \
-						  chapters/background/sections/use-cases.tex \
-						  chapters/background/sections/cloud.tex \
-						  chapters/background/sections/paas.tex \
-						  chapters/background/sections/virtualization.tex \
-						  chapters/background/sections/docker.tex \
-						  chapters/background/sections/platform.tex \
-						  chapters/background/sections/definition.tex \
-						  chapters/elasticity/main.tex \
-						  chapters/elasticity/sections/introduction.tex \
-						  chapters/elasticity/sections/requirements.tex \
-						  chapters/elasticity/sections/multi-tenancy.tex \
-						  chapters/elasticity/sections/objective.tex 
+REPORT_CHAPTERS         = 
 
 .PHONY: clean compile publish
 

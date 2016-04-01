@@ -9,7 +9,7 @@
 %	Table of changes:
 %		06/03/2016 -> document definition
 %---------------------------------------------------------------------------------------------------
-\section{Problem definition}
+\section{Problem statement}
 \label{sec:background-problem}
 Nowadays more and more business companies use complex software systems in their daily activities;
 from the customer care to internal administration. Until recently, these complex applications are
@@ -19,17 +19,17 @@ software-houses that have to maintain the applications.
 From the companies point of view, in order to keep those applications working, according
 to the defined \glossarySng{sla}, they have to invest economic resources in qualified personnel and 
 establish complex administration processes. They can solve this problem through the adoption of 
-one of the many existent frameworks that allows \acs{it} process management. A well known one is
+one of the many existent frameworks that allow to manage \acs{it} processes. A well known one is
 \keyword{\ac{itil}}. The framework, shown in Figure \ref{img:background-problem-itilProcessModel}, 
-defines general best-practices in order to design and instantiate processes that permit a more coherent
-administration of \acs{it} departments and the deployed applications. The processes that are relevant
-for this problem belong to \ac{sda}. They are  \keyword{\ac{am}} and \keyword{\ac{cm}}. Both processes
-focuses on planning and monitoring the effective provision of resources to support all the service
-requirements \cite{availabilityCapacityProcesses}.
+defines some general best-practices in order to design and instantiate processes that permit a more
+coherent administration of \acs{it} departments and the deployed applications. The processes that are
+relevant for this problem belong to \ac{sda}. They are  \keyword{\ac{am}} and \keyword{\ac{cm}}. Bot
+processes focuses on planning and monitoring the effective provision of resources to support all the
+service requirements \cite{availabilityCapacityProcesses}.
 
 \begin{figure}
 	\centering{}
-	\includegraphics[width=0.8\textwidth]{chapters/background/images/itil-map.png}
+	\includegraphics[width=0.75\textwidth]{chapters/background/images/itil-map.png}
 	\caption[\acs{itil} v3 process model]{A bird's eye view of the processes defined by the \acf{itil} 
 		framework. Their main purpose is to manage software's life-cycle in large business companies
 		\cite{itilProcessModel}.}
@@ -37,7 +37,7 @@ requirements \cite{availabilityCapacityProcesses}.
 \end{figure}
 
 On the other hand software-houses have to face with different runtime environments (both in term of
-hardware and software configurations) which makes the \glossaryPlr{deployment-process} more difficult.
+hardware and software configurations) which make the \glossaryPlr{deployment-process} more difficult.
 Another problem is represented by unavoidable bug errors that are present in every application. Here
 bugs are not only due to development errors but they can be also due to the runtime environment itself.
 Thus developers waste a lot of time only to replicate those execution environments, stealing it from
@@ -76,12 +76,7 @@ hardware configuration and ready-to-use work environments promoted the creation 
 cloud model. \ac{paas} is one of the three conceptual layers in the \ac{spi} model: \ac{saas} on the
 top (faces with end-users); \ac{paas} in the middle (faces with developers) and finally \ac{iaas} on
 the bottom where physical resources reside (faces with sysadmins). The \ac{paas} layer is a good place
-where managing the elasticity challenges and the related complexity.
-
-%It differs from \ac{iaas} because \ac{paas} does not allow users to control the underlying
-%hardware directly. In addiction, it also differs from the \ac{saas} layer because the latter is focused
-%on software functionalities while the former is responsible on how the software is deployed and in managing
-%the elasticity challenges and the related complexity. 
+where managing the elasticity challenges and the related complexity. 
 
 Despite all \ac{paas} advantages (described in Section \ref{sec:background-paas-characteristics})
 the following issues may be still present:
@@ -103,8 +98,8 @@ dimensions: \keyword{optimization of the \ac{paas} underlying hardware managemen
 designed software architectures}.
 
 The assets on which the \ac{paas} vendors can make optimizations are those illustrated in Section
-\ref{sec:background-virtualization-assets}, hence our contribution is to compare, and then analyse, the
-infrastructural costs of both \ac{vm} and Docker based \ac{paas} solutions in terms of computing, storage and
+\ref{sec:background-deployments-virtualization-assets}, hence our contribution is to compare, and then analyse,
+the infrastructural costs of both \ac{vm} and Docker based \ac{paas} solutions in terms of computing, storage and
 networking. These assets allow \ac{paas} vendors to satisfy the elasticity requirements as better as they can.
 
 In addiction we will seek for an architectural pattern that is able to exploit the elasticity mechanisms 

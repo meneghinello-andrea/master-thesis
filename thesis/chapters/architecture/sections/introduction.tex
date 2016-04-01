@@ -11,47 +11,41 @@
 %---------------------------------------------------------------------------------------------------
 \section{Introduction}
 \label{sec:architecture-introduction}
-With the marked attention posed on cloud computing and its swiftly risen in the last years, we had
-an immediate perception of the value added. We have seen marked progress in the development of
-\ac{saas} and \ac{iaas} layers leaving the \ac{paas} one unexplored.
+In the previous chapter we have seen how two different deployment units (\ac{kvm} \ac{vm}s and Docker
+containers) are able to exploit the computing assets. Those tests lead us to affirm that even if
+the Docker containers are less adaptable, when they share the same hardware resources (see \acs{cpu}
+and storage benchmark tests in Section \ref{sec:measurements-cpu-results} and
+\ref{sec:measurements-storage-results} respectively), they can fit best to reach the elasticity
+requirements illustrated in Chapter \ref{cap:elasticity}.
 
-Nevertheless, nowadays there are reasons to consider it an emerging business, especially attractive
-for \ac{saas} providers. As we argued in Chapter \ref{cap:elasticity}, a key task of this layer is
-to manage the elasticity issues, but alone, the \ac{paas} layer, is not able to accomplish to this owe.
+This happens because, using the same workload \ac{vm}s reach the scale-out points before Docker
+containers thus \ac{vm}s' behaviour, during the execution of scale-in/out operations (see Section
+\ref{sec:elasticity-requirements-scalability}), can compromise some of the \ac{sla} requirements
+(i.e. perceived \ac{qos}). Instead, given the lightweight nature of Docker containers, when they reach
+the scale-out/in points the associated operations can be executed in less time avoiding the probability
+to break the \ac{sla} requirements with the end-users. Therefore, it is reasonable if \ac{paas} providers
+base their virtualization technologies over containers, as the \ac{paas} vendors in Section
+\ref{sec:background-paas-platforms} already did.
 
-\ac{saas} providers are seeking for automation solutions that help them in \keyword{building},
-\keyword{deploying} and \keyword{managing} their applications in the most flexible as possible way. A
-platform offered as an abstraction layer that hides the complexity of the underlying infrastructures
-is very attractive to that endeavour. In abstract, the scope of \ac{paas} is to mediate interests
-between \ac{saas} and \ac{iaas} layers. Essentially, we want to avoid over-provisioning of resources
-but we also want some policies to preserve the \ac{sla} stipulated with end-users. This mediation
-of interests can be understood as \keyword{system elastiticy}.
+When a developer decides to deploy an application over the \ac{paas} service described above, it is
+making it available anywhere and accessible with any type of device, so the application becomes a
+distributed service. A requirement for distributed services is  availability: they must remain regularly
+available to be used by as many customers as needed with \keyword{acceptable performance} and \keyword{scalability}.
+Distributed services and systems have always been required to be scalable. Replication of services components,
+in order to balance the workload arriving to each replicas, has been the chosen approach.
 
-Nowadays, given the absence of a fully standard \ac{paas} solution the other two layers of the \ac{spi}
-model (\ac{saas} and \ac{iaas}) have tried to provide mechanisms to manage elasticity, \ac{qos} and the
-application life-cycle. However, both of them have characteristics that lead us to consider that they are
-not the right ``place'' to manage them, because:
+Services needed to be carefully designed in order to minimize synchronization needs among their components
+with the aim of avoiding the block their execution and offering high levels of \ac{qos}. So, the
+developers must exploit the elasticity properties offered by the \ac{paas} vendors through a proper
+designed software architecture.
 
-\begin{itemize}
-	\item{in the \ac{iaas} layer there is an evident conflict of interests. On one hand we do not want
-		to manage the hardware infrastructure, on the other we are forced to manage it because this layer
-		provide to us hardware resources in a on-demand way;}
-	\item{instead, in the \ac{saas} we want to keep low coupling with the infrastructure. In this player
-		we have a much high-level view, so we are not interested on how the physical resources
-		are managed.}
-\end{itemize}
+Actually, applications built with the classic principles of the software engineering produce output 
+that we can classify with the term ``monolithic''. Most of the time, applications are made-up of a
+single executable file that contains all the software functionalities. Thus, they do not suit the cloud
+paradigm because they are too coarse-grained to scale efficiently. Thus, a need for an architectural 
+design that is able to efficiently scale our applications or services is risen.
 
-Thus, the need of a mediator is risen, and \ac{paas} layer is the right place to address these challenges
-and the related complexity.
-
-While we have understood the potentiality for the \ac{paas} layer we  still haven't apprehended why
-classic architectural patterns are not ``correct'' for the cloud computing model. Applications built
-with the classic principles of the software engineering produce output that we can classify with the
-term ``monolithic''. Most of the time, applications are made-up of a single executable file that contains
-all the software functionalities. Thus, they do not suit the cloud paradigm because they are too
-coarse-grained to scale efficiently. Thus, a need for an architectural design that is able to efficiently
-scale our applications or services is risen.
-
-An architectural pattern that can help us reaching the target exists, and its name is \acf{soa}. It is
-a pattern born in pre-cloud era, that revisited, bring some benefits such as: \keyword{flexibility} and
-\keyword{agility}. In the following section we are going to analyse this architectural design.
+An architectural pattern that can help us reaching the target is \acf{soa}. This pattern was born in 
+pre-cloud era, but it has many common points with the cloud paradigm. Through its adjustment we are
+able to exploit its benefits (like \keyword{flexibility} and \keyword{agility}) and we can make
+it express the cloud property of elasticity.

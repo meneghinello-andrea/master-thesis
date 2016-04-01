@@ -10,19 +10,38 @@
 %---------------------------------------------------------------------------------------------------
 \section{Introduction}
 \label{sec:elasticity-introduction}
-A requirement for distributed services is availability: they must remain regularly available to be
-used by as many customers as needed with \keyword{acceptable performance} and \keyword{scalability}.
-Distributed services and systems have always been required to be scalable. Replication of services
-components, in order to balance the workload arriving to each replica, has been the chosen approach.
+With the marked attention posed on cloud computing and its swiftly risen in the last years, we had
+an immediate perception of the value added. We have seen marked progress in the development of
+\ac{saas} and \ac{iaas} layers leaving the \ac{paas} one unexplored.
 
-Services needed to be carefully designed in order to minimize synchronization needs among their
-components with the aim of not blocking their execution. Evidently, unlimited scalability could not be
-achieved since it requires infinite infrastructure resources. So, traditionally, scalability of a
-service depends on its software architecture being limited by the amount of hardware resources secured
-in the data-centre where it was deployed.
+Nevertheless, nowadays there are reasons to consider it an emerging business, especially attractive
+for \ac{saas} providers. As we argued in Chapter \ref{cap:elasticity}, a key task of this layer is
+to manage the elasticity issues, but alone, the \ac{paas} layer, is not able to accomplish to this owe.
 
-As we have seen in the previous chapter, the advent of cloud computing partially broke those limits, but
-elasticity management remains not trivial.
+\ac{saas} providers are seeking for automation solutions that help them in \keyword{building},
+\keyword{deploying} and \keyword{managing} their applications in the most flexible as possible way. A
+platform offered as an abstraction layer that hides the complexity of the underlying infrastructures
+is very attractive to that endeavour. In abstract, the scope of \ac{paas} is to mediate interests
+between \ac{saas} and \ac{iaas} layers. Essentially, we want to avoid over-provisioning of resources
+but we also want some policies to preserve the \ac{sla} stipulated with end-users. This mediation
+of interests can be understood as \keyword{system elastiticy}.
+
+Nowadays, given the absence of a fully standard \ac{paas} solution the other two layers of the \ac{spi}
+model (\ac{saas} and \ac{iaas}) have tried to provide mechanisms to manage elasticity, \ac{qos} and the
+application life-cycle. However, both of them have characteristics that lead us to consider that they are
+not the right ``place'' to manage them, because:
+
+\begin{itemize}
+	\item{in the \ac{iaas} layer there is an evident conflict of interests. On one hand we do not want
+		to manage the hardware infrastructure, on the other we are forced to manage it because this layer
+		provide to us hardware resources in a on-demand way;}
+	\item{instead, in the \ac{saas} we want to keep low coupling with the infrastructure. In this player
+		we have a much high-level view, so we are not interested on how the physical resources
+		are managed.}
+\end{itemize}
+
+Thus, the need of a mediator is risen, and \ac{paas} layer is the right place to address these challenges
+and the related complexity.
 
 According to the \ac{nist} definition (given in Section
 \ref{sec:background-cloudComputing-cloudServiceModels}), \ac{paas} gives freedom to the customer regarding

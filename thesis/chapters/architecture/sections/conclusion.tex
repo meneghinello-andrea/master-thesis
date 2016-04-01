@@ -1,0 +1,39 @@
+%---------------------------------------------------------------------------------------------------
+%		conclusion.tex
+%
+%	This is file contains an introduction about the SOA architectural desing.
+%
+%	Author: Andrea Meneghinello
+% Version: 0.1
+%	Table of changes:
+%		21/03/2016 -> document definition
+%---------------------------------------------------------------------------------------------------
+\section{Conclusion}
+\label{sec:architecture-conclusion}
+In this thesis we tried to propose a possible a solution to simplify the necessary efforts to build
+new software by developers.
+
+As we argued in Section \ref{sec:background-problem} business companies do not want to manage the
+necessary hardware to keep the application running according to the \ac{sla} requirements. Because
+they will focus their efforts in the business and want to be supported by the software.
+
+In the same section we also argued about the requests made by software-house which want to focus
+their efforts in build and deploy software and not the environments to support it.
+
+In this thesis we have learned that the \ac{paas} cloud model recently is becoming very interesting,
+and in the nearly future the attention on it will increases again. This service model can answer to
+both the set of requests made by companies and software-houses.
+
+We have seen some basic capabilities offered by Docker containers and we have understood how they are
+changing the \ac{paas} market. Many \ac{paas} providers in the market starting a migration to this
+framework because it offers many useful functionalities and simplify the deployment model (see Section
+\ref{sec:background-paas-platforms}). Even if we have seen, by the benchmark results in Chapter
+\ref{cap:measurements}, that Docker container are less good in sharing the underlying hardware
+assets, they are good to build elastic and multi-tenant service over the \ac{paas} cloud model
+(see Chapter \ref{cap:architecture}).
+
+With Docker we have available a powerful platform agnostic tool that permits to us to simply deploy
+our applications and port them easily to different environments. With Docker, for software-houses
+is easy to build home-made test environments when the software is under test and then deploy it in
+a production environment. The only necessary thing is that both the environments have a running
+Docker daemon.
