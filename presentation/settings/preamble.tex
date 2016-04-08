@@ -1,0 +1,53 @@
+%--------------------------------------------------------------------------------------------------
+% preamble.tex
+%
+% This is the document preamble. It contains a reference to all the necessary libraries and
+% settings to correctly compile the document.
+%
+% author: Andrea Meneghinello
+% version: 0.3
+%--------------------------------------------------------------------------------------------------
+\pdfminorversion=4
+\documentclass[compress]{beamer}
+
+%
+% Theme used by the presentation
+%
+\usetheme{Padova}
+
+%
+% Import of the necessary packges
+%
+\usepackage{caption}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage{latexsym}
+%\usepackage{subfigure}
+\usepackage{subcaption}
+\usepackage[english]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+%
+% Information used to build the frontespiece of the presentation
+%
+\title{Modeling Elastic and Multi-Tenant Applications Deployable\\in the Cloud}
+\subtitle{\footnotesize{A performance comparison of containerization and virtualization}}
+\author{\footnotesize{Author: Andrea Meneghinello\\Supervisor: Tullio Vardanega}}
+\date{\vspace{0mm}\scriptsize{Friday, April 15th, 2016}}
+
+%
+% Override of latex default command
+%
+\renewcommand{\figurename}{Fig.}
+
+%
+% Colors definition
+%
+\definecolor{redMorass}{RGB}{155,0,20}
+
+%
+%	Padova theme settings
+%
+\useoutertheme[subsection=false]{miniframes}
+\setbeamercolor*{palette tertiary}{fg=white,bg=redMorass}

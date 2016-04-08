@@ -1,0 +1,81 @@
+%--------------------------------------------------------------------------------------------------
+% performance.tex
+%
+% This document define the frontespiece of the presentation
+%
+% author: Andrea Meneghinello
+% version: 0.1
+%--------------------------------------------------------------------------------------------------
+\section{Performance analysis}
+\begin{frame}{Performance analysis}
+	\begin{columns}
+		\begin{column}{0.6\textwidth}
+			We compare units of deployments in:
+			\begin{itemize}
+				\item{\footnotesize{computing (LINPACK)}}
+				\begin{itemize}
+					\item{\tiny{\url{https://goo.gl/acS2nC}}}
+				\end{itemize}
+				\item{\footnotesize{storage (STREAM)}}
+				\begin{itemize}
+					\item{\tiny{\url{https://goo.gl/lVi2wO}}}
+				\end{itemize}
+				\item{\footnotesize{networking (IPERF)}}
+				\begin{itemize}
+					\item{\tiny{\url{https://goo.gl/6aqvVE}}}
+				\end{itemize}
+			\end{itemize}
+		\end{column}
+		\begin{column}{0.4\textwidth}
+			\begin{figure}
+				\centering{}
+				\includegraphics[scale=0.2]{images/kpi.png}
+			\end{figure}
+			\begin{flushright}
+				\tiny{source: \url{http://goo.gl/DwpRhl}}
+			\end{flushright}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\subsection{Computing benchmark}
+\begin{frame}{Computing benchmark}
+	\begin{columns}
+		\begin{column}{0.5\textwidth}
+			\centering{}
+			\includegraphics[scale=0.27]{images/cpu-capacity.png}
+		\end{column}
+		\begin{column}{0.5\textwidth}
+			\centering{}
+			\includegraphics[scale=0.27]{images/cpu-time.png}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\subsection{Storage benchmark}
+\begin{frame}{Storage benchmark}
+	\begin{columns}
+		\begin{column}{0.5\textwidth}
+			\centering{}
+			\includegraphics[scale=0.27]{images/storage-l3-capacity.png}
+		\end{column}
+		\begin{column}{0.5\textwidth}
+			\centering{}
+			\includegraphics[scale=0.27]{images/storage-l3-time.png}
+		\end{column}
+	\end{columns}
+\end{frame}
+
+\subsection{Network benchmark}
+\begin{frame}{Network benchmark}
+	\begin{columns}
+		\begin{column}{0.5\textwidth}
+			\centering{}
+			\includegraphics[scale=0.27]{images/network-throughput.png}
+		\end{column}
+		\begin{column}{0.5\textwidth}
+			\centering{}
+			\includegraphics[scale=0.27]{images/network-latency.png}
+		\end{column}
+	\end{columns}
+\end{frame}
