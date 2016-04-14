@@ -9,10 +9,10 @@
 \section{Elasticity}
 \begin{frame}{Elasticity}
 	\begin{columns}
-		\begin{column}{0.7\textwidth}
-			\textbf{Elasticity} obtained by
+		\begin{column}{0.5\textwidth}
+			\textbf{elasticity} obtained by
 			\begin{itemize}
-				\item{\footnotesize{how PaaS manages cloud assets}}
+				\item{\footnotesize{how PaaS exploits IaaS assets}}
 				\begin{itemize}
 					\item{\scriptsize{computing}}
 					\item{\scriptsize{storage}}
@@ -25,13 +25,13 @@
 				\end{itemize}
 			\end{itemize}
 		\end{column}
-		\begin{column}{0.3\textwidth}
+		\begin{column}{0.5\textwidth}
 			\begin{figure}
 				\centering{}
-				\includegraphics[scale=0.25]{images/yin-yang.png}
+				\includegraphics[scale=0.35]{images/elasticity.png}
 			\end{figure}
 			\begin{flushright}
-				\tiny{source: \url{https://goo.gl/jz9sFI}}
+				\tiny{source: \url{https://goo.gl/EzhyD5}}
 			\end{flushright}
 		\end{column}
 	\end{columns}
@@ -43,7 +43,7 @@
 	{
 		\begin{columns}
 			\begin{column}{0.6\textwidth}
-				Elasticity requirements
+				elasticity major requirements
 				\begin{itemize}
 					\item{\footnotesize{from definition of elasticity}}
 					\begin{itemize}
@@ -70,139 +70,34 @@
 	\only<2>
 	{
 		\begin{columns}
-			\begin{column}{0.6\textwidth}
-				Autonomy
-				\begin{itemize}
-					\item{\footnotesize{intelligent agent}}
-					\item{\footnotesize{major-loop}}
-					\begin{itemize}
-						\item{\scriptsize{read from sensors $\rightarrow{}$ monitor}}
-						\item{\scriptsize{read data || knowledge base $\rightarrow{}$ analyse}}
-						\item{\scriptsize{plan actions $\rightarrow{}$ plan}}
-						\item{\scriptsize{execute the plan $\rightarrow{}$ execute}}
-					\end{itemize}
-				\end{itemize}
-			\end{column}
-			\begin{column}{0.4\textwidth}
-				\begin{figure}
-					\centering{}
-				\includegraphics[scale=0.2]{images/autonomy.png}
-				\end{figure}
-			\end{column}
-		\end{columns}
-	}
-	\only<3>
-	{
-		\begin{columns}
 			\begin{column}{0.65\textwidth}
-				Scalability:
+				scalability
 				\begin{itemize}
 					\item{\footnotesize{\textbf{replication (horizontal)}}}
 					\begin{itemize}
 						\item{\scriptsize{the only possible solution in PaaS}}
+						\item{\scriptsize{PaaS manages units of deployments}}
 					\end{itemize}
-					\item{\footnotesize{replicate some components when necessary}}
+					\item{\footnotesize{some components are replicated when necessary}}
 					\begin{itemize}
 						\item{\scriptsize{the process must be transparent}}
 						\item{\scriptsize{services must be well-designed}}
-						\item{\scriptsize{classic architecture does not help}}
+						\item{\scriptsize{classic architectures does not help}}
 					\end{itemize}
-					\item{\footnotesize{other: redimension (vertical) and migration}}
+					\item{\footnotesize{other}}
+					\begin{itemize}
+						\item{\scriptsize{redimension (vertical)}}
+						\item{\scriptsize{migration}}
+					\end{itemize}
 				\end{itemize}
 			\end{column}
 			\begin{column}{0.35\textwidth}
 				\begin{figure}
 					\centering{}
-					\includegraphics[scale=0.14]{images/scalability.png}
+					\includegraphics[scale=0.15]{images/scalability.png}
 				\end{figure}
 				\begin{flushright}
 					\tiny{source: \url{https://goo.gl/orFWSi}}
-				\end{flushright}
-			\end{column}
-		\end{columns}
-	}
-	\only<4>
-	{
-		\begin{columns}
-			\begin{column}{0.6\textwidth}
-				Adaptability dimensions
-				\begin{itemize}
-					\item{\footnotesize{adaptability}}
-					\begin{itemize}
-						\item{\scriptsize{services have to be designed to change at run-time}}
-						\item{\scriptsize{automatic changes}}
-					\end{itemize}
-					\item{\footnotesize{adaptivity}}
-					\begin{itemize}
-						\item{\scriptsize{reactive}}
-						\item{\scriptsize{proactive}}
-						\item{\scriptsize{predictive $\rightarrow{}$ open research field}}
-					\end{itemize}
-				\end{itemize}
-			\end{column}
-			\begin{column}{0.4\textwidth}
-				\begin{figure}
-					\centering{}
-					\includegraphics[scale=0.18]{images/adaptability.png}
-				\end{figure}
-				\begin{flushright}
-					\tiny{source: \url{https://goo.gl/xv8Se6}}
-				\end{flushright}
-			\end{column}
-		\end{columns}
-	}
-	\only<5>
-	{
-		\begin{columns}
-			\begin{column}{0.55\textwidth}
-				SLA-awareness
-				\begin{itemize}
-					\item{\footnotesize{consider customers needs}}
-					\item{\footnotesize{QoS aspects}}
-					\item{\footnotesize{\textbf{rich set of objectives}}}
-				\end{itemize}
-			\end{column}
-			\begin{column}{0.45\textwidth}
-				\begin{figure}
-					\centering{}
-					\includegraphics[scale=0.6]{images/sla.png}
-				\end{figure}
-				\begin{flushright}
-					\tiny{source: \url{http://goo.gl/MW3VJm}}
-				\end{flushright}
-			\end{column}
-		\end{columns}
-	}
-	\only<6>
-	{
-		\begin{figure}
-			\centering{}
-			\includegraphics[scale=0.7]{images/composability.png}	
-		\end{figure}
-		\begin{flushright}
-			\tiny{source: \url{http://goo.gl/2bpnfE}}
-		\end{flushright}
-	}
-	\only<7>
-	{
-		\begin{columns}
-			\begin{column}{0.55\textwidth}
-				Service continuity in SW upgrades
-				\begin{itemize}
-					\item{\footnotesize{global consistency}}
-					\item{\footnotesize{service availability}}
-					\item{\footnotesize{coexistence and service continuity}}
-					\item{\footnotesize{state transfer}}
-					\item{\footnotesize{minimal overhead}}
-				\end{itemize}
-			\end{column}
-			\begin{column}{0.45\textwidth}
-				\begin{figure}
-					\centering{}
-					\includegraphics[scale=0.5, angle=10]{images/upgrade.png}
-				\end{figure}
-				\begin{flushright}
-					\tiny{source: \url{http://goo.gl/IU3eKk}}
 				\end{flushright}
 			\end{column}
 		\end{columns}
@@ -214,22 +109,22 @@
 	\only<1>
 	{
 		\begin{columns}
-			\begin{column}{0.6\textwidth}
-				Requirements
+			\begin{column}{0.57\textwidth}
+				requirements
 				\begin{itemize}
 					\item{\footnotesize{availability $\rightarrow{}$ redundant services}}
 					\item{\footnotesize{secure tenants isolation}}
-					\item{\footnotesize{guarantee of service $\rightarrow$ performance guarantee}}
+					\item{\footnotesize{guarantee of service $\rightarrow$ performance}}
 					\item{\footnotesize{management of underlying resources}}
 				\end{itemize}
 				\begin{center}
-					Software houses have to plan SLA with a rich set of \textbf{objectives}
+					providers have to plan SLA with a rich set of \textbf{objectives}
 				\end{center}
 			\end{column}
-			\begin{column}{0.4\textwidth}
+			\begin{column}{0.43\textwidth}
 				\begin{figure}
 					\centering{}
-					\includegraphics[scale=0.19]{images/multi-tenancy.png}
+					\includegraphics[scale=0.21]{images/multi-tenancy.png}
 				\end{figure}
 				\begin{flushright}
 					\tiny{source: \url{http://goo.gl/MlsmWj}}
@@ -240,25 +135,21 @@
 	\only<2>
 	{
 		\begin{columns}
-			\begin{column}{0.6\textwidth}
-				Possible limits (\tiny{badly designed architecture}\normalsize{)}
+			\begin{column}{0.57\textwidth}
+				naive architectures lead to
 				\begin{itemize}
-					\item{\footnotesize{inflexibility}}
-					\item{\footnotesize{security lack}}
-					\item{\footnotesize{usability}}
+					\item{\footnotesize{inflexibility toward different needs}}
+					\item{\footnotesize{security lacks}}
+					\item{\footnotesize{inadequate usability}}
 					\begin{itemize}
-						\item{\scriptsize{have to resist to high workload $\rightarrow{}$ elasticity}}
-					\end{itemize}
-					\item{\footnotesize{code rewriting}}
-					\begin{itemize}
-						\item{\scriptsize{high investments}}
+						\item{\scriptsize{sustain high workload $\rightarrow{}$ elasticity}}
 					\end{itemize}
 				\end{itemize}
 			\end{column}
-			\begin{column}{0.4\textwidth}
+			\begin{column}{0.43\textwidth}
 				\begin{figure}
 					\centering{}
-					\includegraphics[scale=0.19]{images/multi-tenancy.png}
+					\includegraphics[scale=0.21]{images/multi-tenancy.png}
 				\end{figure}
 				\begin{flushright}
 					\tiny{source: \url{http://goo.gl/MlsmWj}}

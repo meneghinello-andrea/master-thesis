@@ -6,60 +6,84 @@
 % author: Andrea Meneghinello
 % version: 0.1
 %--------------------------------------------------------------------------------------------------
-\section{Architecture}
-\begin{frame}{Architecture}
-	\begin{columns}
-		\begin{column}{0.6\textwidth}
-			Developers have to:
-			\begin{itemize}
-				\item{\footnotesize{abandon ``monolithic'' architectures}}
-				\item{\footnotesize{revisit Service Oriented Architecture (SOA)}}
+\section{Architecture needs}
+\begin{frame}{Architecture needs}
+	\only<1>
+	{
+		\begin{columns}
+			\begin{column}{0.65\textwidth}
+				developers have to:
 				\begin{itemize}
-					\item{\scriptsize{micro-services}}
+					\item{\footnotesize{abandon ``monolithic'' architectures}}
+					\item{\footnotesize{revisit Service Oriented Architecture (SOA)}}
+					\begin{itemize}
+						\item{\scriptsize{common points with cloud}}
+						\item{\scriptsize{review services size $\rightarrow{}$ elasticity}}
+						\begin{itemize}
+							\item{\tiny{micro-services}}
+						\end{itemize}
+					\end{itemize}
 				\end{itemize}
-			\end{itemize}
-		\end{column}
-		\begin{column}{0.4\textwidth}
-			\begin{figure}
-				\centering{}
-				\includegraphics[scale=0.2]{images/think.png}
-			\end{figure}
-			\begin{flushright}
-				\tiny{source: \url{http://goo.gl/DwpRhl}}
-			\end{flushright}
-		\end{column}
-	\end{columns}
+			\end{column}
+			\begin{column}{0.35\textwidth}
+				\begin{figure}
+					\centering{}
+					\includegraphics[scale=0.14]{images/micro-services.png}
+				\end{figure}
+				\begin{flushright}
+					\tiny{source: \url{http://goo.gl/qw1Dhf}}
+				\end{flushright}
+			\end{column}
+		\end{columns}
+	}
 \end{frame}
 
-\subsection{Micro-services}
-\begin{frame}{Micro-services}
-	\begin{columns}
-		\begin{column}{0.6\textwidth}
-			SOA and Cloud
-			\begin{itemize}
-				\item{\footnotesize{have common points}}
-				\item{\footnotesize{we have to review services size $\rightarrow{}$ elasticity performance}}
+\subsection{Idealized architecture}
+\begin{frame}{Idealized architecture}
+	\only<1>
+	{
+		\begin{figure}
+			\centering{}
+			\includegraphics[scale=0.11]{images/architecture.png}
+		\end{figure}
+	}
+	\only<2>
+	{
+		\begin{columns}
+			\begin{column}{0.7\textwidth}
+				``seeker server'' manage \textbf{elasticity} through
 				\begin{itemize}
-					\item{\scriptsize{services $\rightarrow{}$ micro-services}}
+					\item{\footnotesize{autonomy}}
+					\begin{itemize}
+						\item{\scriptsize{is an intelligent agent}}
+						\item{\scriptsize{major loop}}
+					\end{itemize}
+					\item{\footnotesize{composability mechanisms}}
+					\item{\footnotesize{consider adaptability dimensions}}
+					\begin{itemize}
+						\item{\scriptsize{adaptability}}
+						\item{\scriptsize{adaptivity $\rightarrow{}$ become \textbf{proactive}}}
+					\end{itemize}
+					\item{\footnotesize{scalability}}
+					\begin{itemize}
+						\item{\scriptsize{scale-in/out containers}}
+					\end{itemize}
 				\end{itemize}
-			\end{itemize}
-		\end{column}
-		\begin{column}{0.4\textwidth}
-			\begin{figure}
-				\centering{}
-				\includegraphics[scale=0.25]{images/micro-services.png}
-			\end{figure}
-			\begin{flushright}
-				\tiny{source: \url{http://goo.gl/Z0i67L}}
-			\end{flushright}
-		\end{column}
-	\end{columns}
+			\end{column}
+			\begin{column}{0.3\textwidth}
+				\begin{figure}
+					\centering{}
+					\includegraphics[scale=0.15]{images/autonomy.png}
+				\end{figure}
+			\end{column}
+		\end{columns}
+	}
 \end{frame}
 
-\subsection{Proposed architecture}
-\begin{frame}{Proposed architecture}
-	\begin{figure}
-		\centering{}
-		\includegraphics[scale=0.11]{images/architecture.png}
-	\end{figure}
-\end{frame}
+%\begin{frame}{Bibliography}
+%	\begin{enumerate}
+%		\item{\footnotesize{\url{https://goo.gl/acS2nC}}}
+%		\item{\footnotesize{\url{https://goo.gl/lVi2wO}}}
+%		\item{\footnotesize{\url{https://goo.gl/6aqvVE}}}
+%	\end{enumerate}
+%\end{frame}
